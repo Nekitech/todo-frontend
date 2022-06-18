@@ -1,0 +1,30 @@
+.task {
+    width: 100%;
+    min-height: 100px;
+    background-color: #9D8E8E;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+.task__container {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+}
+.task__text {
+    flex: 80%;
+    margin: 0 10px;
+    font-size: 24px;
+}
+.task__iconRadioActive {
+    flex: 5%;
+    cursor: pointer;
+}
+.task__fail {
+    flex: 5%;
+    cursor: pointer;
+}
+.task__bucket {
+    flex: 5%;
+    cursor: pointer;
+}
+
