@@ -6,15 +6,10 @@ function NeedTodoTasks(props) {
     return (
         <div>
             <h6 className={styles.needTodo__title}>Надо сделать</h6>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
+            {props.compTasks.map(task =>
+                <Task text={task.text} key={task.id}/>
+            )}
+
         </div>
     );
 }

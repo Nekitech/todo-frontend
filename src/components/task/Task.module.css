@@ -25,10 +25,23 @@
     flex: 5%;
     cursor: pointer;
     user-select: none;
+    transform: scale(0.9);
+    transition: 0.3s all;
 }
+.task__fail:hover {
+    transform: scale(1);
+    transition: 0.3s all;
+}
+
 .task__bucket {
     flex: 5%;
     cursor: pointer;
     user-select: none;
+    transform: scale(0.9);
+    transition: 0.3s all;
+}
+.task__bucket:hover {
+    transform: scale(1);
+    transition: 0.3s all;
 }
 

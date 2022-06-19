@@ -5,9 +5,10 @@ import CompleteTasks from "../completeTaks/CompleteTasks";
 
 
 function ListTask(props) {
+
     return (
         <div className={styles.listTask}>
-            <NeedTodoTasks/>
+            <NeedTodoTasks compTasks={props.tasksList}/>
             <CompleteTasks/>
         </div>
     );

@@ -9,7 +9,7 @@ function Task(props) {
         <div className={styles.task}>
             <div className={styles.task__container}>
                 <img className={styles.task__iconRadioActive} src={radioBtnUnactive} alt="icon"/>
-                <p className={styles.task__text}>Завтра сходить в магазин, купить хлеба</p>
+                <p className={styles.task__text}>{props.text}</p>
                 <img className={styles.task__fail} src={failImg} alt="icon"/>
                 <img className={styles.task__bucket} src={bucket} alt="icon"/>
             </div>
