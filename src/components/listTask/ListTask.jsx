@@ -8,7 +8,7 @@ function ListTask(props) {
 
     return (
         <div className={styles.listTask}>
-            <NeedTodoTasks compTasks={props.tasksList}/>
+            <NeedTodoTasks compTasks={props.tasksList} cb={props.cb}/>
             <CompleteTasks/>
         </div>
     );

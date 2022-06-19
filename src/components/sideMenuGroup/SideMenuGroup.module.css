@@ -17,6 +17,7 @@
     cursor: pointer;
     transition: 0s all;
     z-index: 10;
+    user-select: none;
 }
 .activeIcon {
     transform: rotateY(180deg);

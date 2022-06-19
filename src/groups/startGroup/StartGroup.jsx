@@ -14,10 +14,13 @@ const MyComponent = (props) => {
     const newTask = (newTask) => {
         setTasks([newTask, ...tasks])
     }
+    const deleteTask = (task) => {
+        setTasks(tasks.filter(t => t.id !== task.id))
+    }
 
     return (
         <div className={styles.startGroup}>
-            <ListTask tasksList={tasks}/>
+            <ListTask tasksList={tasks} cb={deleteTask}/>
             <AddTask cb={newTask}/>
         </div>
     );

@@ -16,6 +16,7 @@
 
 }
 .addTask__areaText {
+    font-family: Roboto, serif;
     max-width: 80%;
     font-size: 24px;
     margin: 0 10px;
@@ -26,6 +27,7 @@
     border: none;
     resize: none;
     overflow: hidden;
+
 }
 
 .addTask__areaText::-webkit-input-placeholder {

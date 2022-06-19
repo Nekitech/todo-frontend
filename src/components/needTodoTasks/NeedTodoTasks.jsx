@@ -7,7 +7,7 @@ function NeedTodoTasks(props) {
         <div>
             <h6 className={styles.needTodo__title}>Надо сделать</h6>
             {props.compTasks.map(task =>
-                <Task text={task.text} key={task.id}/>
+                <Task task={task} key={task.id} cb={props.cb}/>
             )}
 
         </div>
