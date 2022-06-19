@@ -1,5 +1,6 @@
 .listTask {
     display: flex;
     max-width: 1058px;
-    margin: 100px auto;
+    flex-direction: column;
+    padding: 10px;
 }

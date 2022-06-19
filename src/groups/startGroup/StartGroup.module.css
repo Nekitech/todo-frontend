@@ -1,3 +1,8 @@
 .startGroup {
-
+    display: flex;
+    flex-direction: column;
+    max-width: 1058px;
+    margin: 100px auto;
+    height: 80vh;
+    justify-content: space-between;
 }

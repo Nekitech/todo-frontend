@@ -1,0 +1,40 @@
+.addTask {
+    width: 100%;
+    min-height: 100px;
+    background-color: #9D8E8E;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addTask__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 25px;
+
+}
+.addTask__areaText {
+    max-width: 80%;
+    font-size: 24px;
+    margin: 0 10px;
+    outline: none;
+    flex: 80%;
+}
+.addTask__areaText[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #fff;
+}
+.addTask__cross {
+    flex: 10%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.addTask__alarm {
+    flex: 10%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}

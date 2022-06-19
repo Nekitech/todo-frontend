@@ -6,6 +6,8 @@ function ListTask(props) {
     return (
         <div className={styles.listTask}>
             <Task/>
+            <Task/>
+            <Task/>
         </div>
     );
 }

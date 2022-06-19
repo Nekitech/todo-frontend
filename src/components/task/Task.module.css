@@ -3,7 +3,7 @@
     min-height: 100px;
     background-color: #9D8E8E;
     border-radius: 10px;
-    margin: 0 20px;
+    margin: 20px 0;
 }
 .task__container {
     display: flex;
