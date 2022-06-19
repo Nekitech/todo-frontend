@@ -4,8 +4,8 @@ import sideMenuIcon from '../../img/SideMenuIcon.svg'
 
 function SideMenuGroup(props) {
 
-    let menu = useRef(null)
-    let icon = useRef(null)
+    let menu = useRef()
+    let icon = useRef()
     return (
         <div ref={menu} className={styles.sideMenu}>
             <img ref={icon} onClick={() => {

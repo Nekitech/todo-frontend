@@ -3,7 +3,7 @@ import styles from './AddTask.module.css'
 import cross from '../../img/cross.svg'
 import alarm from '../../img/alarm.svg'
 
-function AddTask({cb}) {
+function AddTask({addT}) {
     let [textArea, setTextArea] = useState('')
 
 
@@ -11,9 +11,9 @@ function AddTask({cb}) {
         const newTasks = {
             'id': Date.now(),
             'text': textArea,
-            'state': 'needTodo'
+            'status': 'needTodo'
         }
-        cb(newTasks)
+        addT(newTasks)
         setTextArea('')
     }
 

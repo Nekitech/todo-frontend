@@ -7,7 +7,7 @@ const MyComponent = (props) => {
         {
         'id': Date.now(),
         'text': 'Завтра сходить в магазин, купить хлеба',
-        'state': 'needTodo'
+        'status': 'needTodo'
         }
     ])
 
@@ -17,11 +17,14 @@ const MyComponent = (props) => {
     const deleteTask = (task) => {
         setTasks(tasks.filter(t => t.id !== task.id))
     }
+    const changeTask = (taskChanged) => {
+        setTasks(tasks.map(task => (task.id === taskChanged.id) ? task = taskChanged : task))
+    }
 
     return (
         <div className={styles.startGroup}>
-            <ListTask tasksList={tasks} cb={deleteTask}/>
-            <AddTask cb={newTask}/>
+            <ListTask tasksList={tasks} removeTask={deleteTask} changeTask={changeTask}/>
+            <AddTask addT={newTask}/>
         </div>
     );
 };

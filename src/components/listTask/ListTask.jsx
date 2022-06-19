@@ -8,8 +8,10 @@ function ListTask(props) {
 
     return (
         <div className={styles.listTask}>
-            <NeedTodoTasks compTasks={props.tasksList} cb={props.cb}/>
-            <CompleteTasks/>
+            <NeedTodoTasks needTasks={props.tasksList.filter(task => task.status === 'needTodo')} removeTask={props.removeTask}
+                           changeTask={props.changeTask}/>
+            <CompleteTasks compTasks={props.tasksList.filter(task => task.status === 'complete')} removeTask={props.removeTask}
+                           changeTask={props.changeTask}/>
         </div>
     );
 }
