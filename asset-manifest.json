@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/todo-react-nodejs/static/css/main.6f729c09.css",
+    "main.js": "/todo-react-nodejs/static/js/main.9da9fbd8.js",
+    "static/media/alarm.svg": "/todo-react-nodejs/static/media/alarm.0224c18626698c9e37e0b74ec229ac46.svg",
+    "static/media/failImg.svg": "/todo-react-nodejs/static/media/failImg.1309852740b1a37dd2936e3ff1138274.svg",
+    "static/media/bucket.svg": "/todo-react-nodejs/static/media/bucket.8e6d50ae30c3e99dad26d09fd06c57a9.svg",
+    "index.html": "/todo-react-nodejs/index.html",
+    "static/media/cross.svg": "/todo-react-nodejs/static/media/cross.a4360b550cb31d369de23d674e1d1ec6.svg",
+    "static/media/SideMenuIcon.svg": "/todo-react-nodejs/static/media/SideMenuIcon.231706dbf8affa93490f4e98dee2ae1b.svg",
+    "static/media/radioBtnUnactive.svg": "/todo-react-nodejs/static/media/radioBtnUnactive.7f6dd60b96ba2856add0c4039fd6580e.svg",
+    "main.6f729c09.css.map": "/todo-react-nodejs/static/css/main.6f729c09.css.map",
+    "main.9da9fbd8.js.map": "/todo-react-nodejs/static/js/main.9da9fbd8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f729c09.css",
+    "static/js/main.9da9fbd8.js"
+  ]
+}
