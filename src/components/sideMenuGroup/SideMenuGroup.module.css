@@ -1,0 +1,33 @@
+.sideMenu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 0px;
+    height: 100vh;
+    /*transform: translateX(-70%);*/
+    transition: 0.3s all;
+    background-color: transparent;
+
+
+}
+.sideMenu__icon {
+    position: absolute;
+    top: 50px;
+    right: -50px;
+    cursor: pointer;
+    transition: 0s all;
+    z-index: 10;
+}
+.activeIcon {
+    transform: rotateY(180deg);
+    transition: 0s all;
+    right: 50px;
+
+}
+
+.activeMenu {
+    width: 430px;
+    /*transform: translateX(0);*/
+    transition: 0.3s all;
+    background-color: #A47878;
+}

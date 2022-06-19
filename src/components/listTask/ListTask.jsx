@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './ListTask.module.css'
-import Task from "../task/Task";
+import NeedTodoTasks from "../needTodoTasks/NeedTodoTasks";
+import CompleteTasks from "../completeTaks/CompleteTasks";
+
 
 function ListTask(props) {
     return (
         <div className={styles.listTask}>
-            <Task/>
-            <Task/>
-            <Task/>
+            <NeedTodoTasks/>
+            <CompleteTasks/>
         </div>
     );
 }

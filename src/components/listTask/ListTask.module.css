@@ -1,6 +1,11 @@
 .listTask {
     display: flex;
     max-width: 1058px;
+    height: 100%;
     flex-direction: column;
     padding: 10px;
+    overflow-y: auto;
+}
+.listTask::-webkit-scrollbar {
+    width: 0;
 }
