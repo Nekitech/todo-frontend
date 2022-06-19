@@ -9,14 +9,13 @@ function Task(props) {
     return (
         <div className={styles.task}>
             <div className={styles.task__container}>
-                <img src={(props.task.status === 'needTodo') ? radioUnactive : radioActive} onClick={(e) => {
+                <img className={styles.task__iconRadio} src={(props.task.status === 'needTodo') ? radioUnactive : radioActive} onClick={(e) => {
                     if(props.task.status === 'needTodo') {
                         props.changeTask(props.task.status = 'complete')
                     }
                     else {
                         props.changeTask(props.task.status = 'needTodo')
                     }
-
 
                 }} alt=""/>
                 <p className={styles.task__text}>{props.task.text}</p>

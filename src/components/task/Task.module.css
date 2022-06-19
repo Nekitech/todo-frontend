@@ -15,12 +15,10 @@
     margin: 0 10px;
     font-size: 24px;
 }
-.task__iconRadioActive {
+.task__iconRadio {
     max-width: 36px;
     min-height: 36px;
-    border: 2px solid #fff;
-    background-color: transparent;
-    border-radius: 50%;
+
     flex: 5%;
     cursor: pointer;
     user-select: none;
