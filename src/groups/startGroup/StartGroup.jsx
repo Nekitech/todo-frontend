@@ -17,6 +17,7 @@ const MyComponent = (props) => {
     const deleteTask = (task) => {
         setTasks(tasks.filter(t => t.id !== task.id))
     }
+    // Функция для отслеживания изменения статуса задачи и изменении соответ. задачи в списке задач
     const changeTask = (taskChanged) => {
         setTasks(tasks.map(task => (task.id === taskChanged.id) ? task = taskChanged : task))
     }

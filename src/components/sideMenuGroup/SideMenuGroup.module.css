@@ -2,9 +2,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 0px;
+    width: 0;
     height: 100vh;
-    /*transform: translateX(-70%);*/
     transition: 0.3s all;
     background-color: transparent;
 
@@ -28,7 +27,16 @@
 
 .activeMenu {
     width: 430px;
-    /*transform: translateX(0);*/
+    opacity: 100%;
     transition: 0.3s all;
     background-color: #A47878;
+}
+.sideMenu__container {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    padding: 100px 30px 100px 30px;
+}
+.activeMenu .sideMenu__container {
+    opacity: 100%;
 }
