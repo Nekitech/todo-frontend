@@ -26,8 +26,10 @@
     color: #fff;
     border: none;
     resize: none;
-    overflow: hidden;
-
+    overflow-y: scroll;
+}
+.addTask__areaText::-webkit-scrollbar {
+    width: 0;
 }
 
 .addTask__areaText::-webkit-input-placeholder {
