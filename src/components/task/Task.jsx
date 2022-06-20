@@ -16,7 +16,6 @@ function Task(props) {
                     else if(props.task.status === 'complete') {
                         props.changeTask(props.task.status = 'needTodo')
                     }
-
                 }} alt=""/>
                 <p className={styles.task__text} style={(props.task.status === 'complete')
                     ? {textDecoration:'line-through'}
@@ -36,11 +35,15 @@ function Task(props) {
                     )
                     :
                     null
-
                 }
-
                 <img onClick={() => props.removeTask(props.task)} className={styles.task__bucket} src={bucket} alt="icon"/>
             </div>
+            {
+                (props.task.status === 'complete' || props.task.status === 'uncomplete')
+                ? (<div className={styles.task__darkFon}></div>)
+                : null
+            }
+
         </div>
     );
 }
