@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./Group.module.css";
+import styles from "./GroupBtn.module.css";
 import groupIcon from "../../img/iconGroup.svg";
 
-function Group(props) {
+function GroupBtn(props) {
     return (
         <div className={styles.group}>
             <img className={styles.iconGroup} src={groupIcon} alt=""/>
@@ -11,4 +11,4 @@ function Group(props) {
     );
 }
 
-export default Group;
+export default GroupBtn;

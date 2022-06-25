@@ -1,15 +1,9 @@
 import React, {useState} from 'react';
-import styles from './StartGroup.module.css'
+import styles from './Group.module.css'
 import ListTask from "../../components/listTask/ListTask";
 import AddTask from "../../components/addTask/AddTask";
-const MyComponent = (props) => {
-    let [tasks, setTasks] = useState([
-        {
-        'id': Date.now(),
-        'text': 'Завтра сходить в магазин, купить хлеба',
-        'status': 'needTodo'
-        }
-    ])
+const Group = ({stateTasks}) => {
+    const {tasks, setTasks} = stateTasks;
 
     const newTask = (newTask) => {
         setTasks([newTask, ...tasks])
@@ -30,5 +24,5 @@ const MyComponent = (props) => {
     );
 };
 
-export default MyComponent;
+export default Group;
 
