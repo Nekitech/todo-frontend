@@ -5,7 +5,6 @@ import CompleteTasks from "../completeTaks/CompleteTasks";
 import UncompleteTasks from "../uncompleteTasks/UncompleteTasks";
 
 function ListTask(props) {
-    console.log(props.tasksList)
     return (
         <div className={styles.listTask}>
             <NeedTodoTasks needTasks={props.tasksList.filter(task => task.status === 'needTodo')}

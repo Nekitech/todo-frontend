@@ -14,6 +14,7 @@ function AddGroup(props) {
                     tasks: []
                 }
                 props.cbAddGroup(newGroup)
+                setNameGroup('')
             }}
              className={styles.cross} src={cross} alt=""/>
             <input
