@@ -7,7 +7,7 @@ function ListGroupBtn(props) {
         <div className={styles.listGroup}>
             {
                 props.listGroups.map((g) =>
-                    <GroupBtn name={g.nameGroup} key={g.id}/>
+                    <GroupBtn name={g.nameGroup} key={g.idGroup} cbCurrGroup={props.cbCurrGroup}/>
                 )
             }
         </div>

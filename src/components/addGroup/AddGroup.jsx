@@ -3,20 +3,19 @@ import styles from './AddGroup.module.css'
 import cross from '../../img/cross.svg'
 
 function AddGroup(props) {
-    let [nameGroup, setNameGroup] = useState('')
-
-    const addGroup = () => {
-        const newGroup = {
-            id: Date.now(),
-            nameGroup: nameGroup,
-            path: '/' + nameGroup
-        }
-        props.cbAddGroups(newGroup)
-    }
+    const [nameGroup, setNameGroup] = useState('')
 
     return (
         <div className={styles.addGroup}>
-            <img onClick={addGroup} className={styles.cross} src={cross} alt=""/>
+            <img onClick={() => {
+                const newGroup = {
+                    idGroup: Date.now(),
+                    nameGroup: nameGroup,
+                    tasks: []
+                }
+                props.cbAddGroup(newGroup)
+            }}
+             className={styles.cross} src={cross} alt=""/>
             <input
                 value={nameGroup}
                 onChange={(e) => setNameGroup(e.target.value)}

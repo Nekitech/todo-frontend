@@ -4,7 +4,7 @@ import groupIcon from "../../img/iconGroup.svg";
 
 function GroupBtn(props) {
     return (
-        <div className={styles.group}>
+        <div onClick={() => props.cbCurrGroup(props.name)} className={styles.groupBtn}>
             <img className={styles.iconGroup} src={groupIcon} alt=""/>
             <p className={styles.groupName}>{props.name}</p>
         </div>

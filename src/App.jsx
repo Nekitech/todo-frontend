@@ -1,28 +1,50 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './App.module.css';
 import Group from "./groups/group/Group";
 import SideMenuGroup from "./components/sideMenuGroup/SideMenuGroup";
 
 // подключение данных
 
-import data from './assets/data.json';
 
 function App() {
-    const [currGroup, setCurrGroup] = useState(data["Мой день"]);
-    let [groups, setGroups] = useState([{
-        id: data["Мой день"].idGroup, nameGroup: data["Мой день"].nameGroup,
+    const [groups, setGroups] = useState([
+        {
+        idGroup: 1,
+        nameGroup: 'Мой день',
+        tasks: [
+        {
+            id: 1,
+            text: "Завтра сходить в магазин, купить хлеба",
+            status: "needTodo"
+        }
+        ]
+    },
+    {
+        idGroup: 2,
+        nameGroup: "Моя жизнь",
+        tasks: [
+        {
+            id: "1",
+            text: "Завтра сходить в магазин, купить молока",
+            status: "needTodo"
+        }
+        ]
     }
     ])
+    const [currGroupName, setCurrGroupName] = useState(groups[0].nameGroup);
 
-    const [tasks, setTasks] = useState(currGroup.tasks)
-    console.log(tasks)
-    let addGroup = (newGroup) => {
+    const changeCurrGroup = (groupName) => {
+        setCurrGroupName(groupName)
+    }
+
+    const addGroup = (newGroup) => {
         setGroups([newGroup, ...groups])
     }
+
   return (
     <div className={styles.app}>
-        <SideMenuGroup listGroups={groups} cbAddGroup={addGroup}/>
-        <Group stateTasks={{tasks, setTasks}}/>
+        <SideMenuGroup listGroups={groups} cbAddGroup={addGroup} cbCurrGroup={changeCurrGroup}/>
+        <Group stateTasks={{groups, setGroups, currGroupName}}/>
     </div>
   );
 }

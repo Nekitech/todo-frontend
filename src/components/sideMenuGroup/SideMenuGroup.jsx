@@ -15,8 +15,8 @@ function SideMenuGroup(props) {
                 icon.current.classList.toggle(`${styles.activeIcon}`)
             }} className={styles.sideMenu__icon} src={sideMenuIcon} alt="icon"/>
             <div className={styles.sideMenu__container}>
-                <AddGroup cbAddGroups={props.cbAddGroup}/>
-                <ListGroupBtn listGroups={props.listGroups}/>
+                <AddGroup cbAddGroup={props.cbAddGroup}/>
+                <ListGroupBtn listGroups={props.listGroups} cbCurrGroup={props.cbCurrGroup}/>
             </div>
         </div>
 

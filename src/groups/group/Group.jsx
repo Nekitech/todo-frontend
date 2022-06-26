@@ -3,22 +3,23 @@ import styles from './Group.module.css'
 import ListTask from "../../components/listTask/ListTask";
 import AddTask from "../../components/addTask/AddTask";
 const Group = ({stateTasks}) => {
-    const {tasks, setTasks} = stateTasks;
+    const {groups, setGroups, currGroupName} = stateTasks;
 
     const newTask = (newTask) => {
-        setTasks([newTask, ...tasks])
+        setGroups(groups.map(g => g.nameGroup === currGroupName ? {...g, tasks: [...g.tasks, newTask]} : g))
+        console.log(groups.map(g => g.nameGroup === currGroupName ? {...g, tasks: [...g.tasks, newTask]} : g))
     }
     const deleteTask = (task) => {
-        setTasks(tasks.filter(t => t.id !== task.id))
+        setGroups(groups.map(g => g.nameGroup === currGroupName ? {...g, tasks: g.tasks.filter(t => t.id !== task.id)} : g))
     }
     // Функция для отслеживания изменения статуса задачи и изменении соответ. задачи в списке задач
     const changeTask = (taskChanged) => {
-        setTasks(tasks.map(task => (task.id === taskChanged.id) ? task = taskChanged : task))
+        setGroups(groups.map(g => g.nameGroup === currGroupName ? {...g, tasks:  g.tasks.map(task => (task.id === taskChanged.id) ? taskChanged : task)} : g))
     }
 
     return (
         <div className={styles.startGroup}>
-            <ListTask tasksList={tasks} removeTask={deleteTask} changeTask={changeTask}/>
+            <ListTask tasksList={groups.filter(g => g.nameGroup === currGroupName)[0].tasks} removeTask={deleteTask} changeTask={changeTask}/>
             <AddTask addT={newTask}/>
         </div>
     );

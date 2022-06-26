@@ -1,8 +1,8 @@
-.group {
+.groupBtn {
     display: flex;
     align-items: center;
     cursor: pointer;
-
+    margin-bottom: 30px;
 }
 .iconGroup {
     width: 20px;
