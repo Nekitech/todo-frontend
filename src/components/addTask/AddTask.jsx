@@ -21,17 +21,18 @@ function AddTask({addT}) {
         <div className={styles.addTask}>
             <div className={styles.addTask__container}>
                 <img onClick={() => {
-                    if (textArea !== '') {
+                    if (textArea.match(/\S/g) !== null) {
                         handleAddNewTask()
                     }
                 }
                 } className={styles.addTask__cross} src={cross} alt="icon"/>
-                <input
+                <textarea
                     onChange={(e) => {
                         setTextArea(e.target.value)
+                        console.log(textArea.match(/\S/g))
                     }}
                     onKeyDown={(event) => {
-                        if(event.key === 'Enter' && textArea !== '') {
+                        if(event.key === 'Enter' && textArea.match(/\S/g) !== null) {
                             handleAddNewTask()
                         }
                     }
@@ -39,7 +40,7 @@ function AddTask({addT}) {
                     value={textArea}
                     className={styles.addTask__areaText}
                     placeholder={'Новая задача'}>
-                </input>
+                </textarea>
                 <img className={styles.addTask__alarm} src={alarm} alt="icon"/>
             </div>
         </div>

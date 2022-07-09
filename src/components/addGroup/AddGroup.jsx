@@ -17,7 +17,7 @@ function AddGroup(props) {
     return (
         <div className={styles.addGroup} >
             <img onClick={() => {
-                if(nameGroup !== '') {
+                if(nameGroup.match(/\S/g) !== null) {
                     handleAddGroup()
                 }
             }} className={styles.cross} src={cross} alt=""/>
@@ -26,7 +26,7 @@ function AddGroup(props) {
                 onChange={(e) => setNameGroup(e.target.value)}
                 className={styles.inputNameGroup} placeholder={'Создать группу'}
                 onKeyPress={(event) => {
-                    if (event.key === 'Enter' && nameGroup !== '') {
+                    if (event.key === 'Enter' && nameGroup.match(/\S/g) !== null) {
                         handleAddGroup()
                     }
                 }}/>
