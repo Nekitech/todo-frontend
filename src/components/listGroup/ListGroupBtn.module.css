@@ -1,3 +1,8 @@
 .listGroup {
     margin-top: 78px;
+    overflow-y: scroll;
+    height: 80vh;
+}
+.listGroup::-webkit-scrollbar {
+    display: none;
 }

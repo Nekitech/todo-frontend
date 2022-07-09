@@ -7,7 +7,7 @@ function AddTask({addT}) {
     let [textArea, setTextArea] = useState('')
 
 
-    const addNewTask = () => {
+    const handleAddNewTask = () => {
         const newTasks = {
             'id': Date.now(),
             'text': textArea,
@@ -20,11 +20,26 @@ function AddTask({addT}) {
     return (
         <div className={styles.addTask}>
             <div className={styles.addTask__container}>
-                <img onClick={addNewTask} className={styles.addTask__cross} src={cross} alt="icon"/>
-                <textarea onChange={(e) => {
-                    setTextArea(e.target.value)
-                }} value={textArea} className={styles.addTask__areaText} placeholder={'Новая задача'}>
-                </textarea>
+                <img onClick={() => {
+                    if (textArea !== '') {
+                        handleAddNewTask()
+                    }
+                }
+                } className={styles.addTask__cross} src={cross} alt="icon"/>
+                <input
+                    onChange={(e) => {
+                        setTextArea(e.target.value)
+                    }}
+                    onKeyDown={(event) => {
+                        if(event.key === 'Enter' && textArea !== '') {
+                            handleAddNewTask()
+                        }
+                    }
+                    }
+                    value={textArea}
+                    className={styles.addTask__areaText}
+                    placeholder={'Новая задача'}>
+                </input>
                 <img className={styles.addTask__alarm} src={alarm} alt="icon"/>
             </div>
         </div>
