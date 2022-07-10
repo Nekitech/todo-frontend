@@ -5,32 +5,10 @@ import SideMenuGroup from "./components/sideMenuGroup/SideMenuGroup";
 
 // подключение данных
 
+import {data} from './assets/data';
 
 function App() {
-    const [groups, setGroups] = useState([
-        {
-        idGroup: 1,
-        nameGroup: 'Мой день',
-        tasks: [
-        {
-            id: 1,
-            text: "Завтра сходить в магазин, купить хлеба",
-            status: "needTodo"
-        }
-        ]
-    },
-    {
-        idGroup: 2,
-        nameGroup: "Моя жизнь",
-        tasks: [
-        {
-            id: "1",
-            text: "Завтра сходить в магазин, купить молока",
-            status: "needTodo"
-        }
-        ]
-    }
-    ])
+    const [groups, setGroups] = useState(data)
     const [currGroupName, setCurrGroupName] = useState(groups[0].nameGroup);
 
     const changeCurrGroup = (groupName) => {
@@ -41,12 +19,12 @@ function App() {
         setGroups([newGroup, ...groups])
     }
 
-  return (
-    <div className={styles.app}>
-        <SideMenuGroup listGroups={groups} cbAddGroup={addGroup} cbCurrGroup={changeCurrGroup}/>
-        <Group stateTasks={{groups, setGroups, currGroupName}}/>
-    </div>
-  );
+    return (
+        <div className={styles.app}>
+            <SideMenuGroup listGroups={groups} cbAddGroup={addGroup} cbCurrGroup={changeCurrGroup}/>
+            <Group stateTasks={{groups, setGroups, currGroupName}}/>
+        </div>
+    );
 }
 
 export default App;

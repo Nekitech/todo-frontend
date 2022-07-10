@@ -4,12 +4,12 @@ import Task from "../task/Task";
 
 function NeedTodoTasks(props) {
     return (
-        <div>
+        <>
             <h6 className={styles.needTodo__title}>Надо сделать</h6>
             {props.needTasks.map(task =>
                 <Task task={task} key={task.id} removeTask={props.removeTask} changeTask={props.changeTask}/>
             )}
-        </div>
+        </>
     );
 }
 

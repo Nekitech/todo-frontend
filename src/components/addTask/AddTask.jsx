@@ -6,7 +6,6 @@ import alarm from '../../img/alarm.svg'
 function AddTask({addT}) {
     let [textArea, setTextArea] = useState('')
 
-
     const handleAddNewTask = () => {
         const newTasks = {
             'id': Date.now(),
@@ -29,7 +28,6 @@ function AddTask({addT}) {
                 <textarea
                     onChange={(e) => {
                         setTextArea(e.target.value)
-                        console.log(textArea.match(/\S/g))
                     }}
                     onKeyDown={(event) => {
                         if(event.key === 'Enter' && textArea.match(/\S/g) !== null) {
