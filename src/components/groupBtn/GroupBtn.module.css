@@ -9,6 +9,11 @@
     height: 43px;
     align-self: end;
 }
+.iconGroupDelete {
+    width: 50px;
+    height: 50px;
+    align-self: end;
+}
 .groupName {
     width: 100%;
     color: #fff;

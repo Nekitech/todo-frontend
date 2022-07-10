@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import styles from "./GroupBtn.module.css";
 import groupIcon from "../../img/iconGroup.svg";
+import bucket from '../../img/bucket.svg'
 
 function GroupBtn(props) {
 
@@ -19,9 +20,12 @@ function GroupBtn(props) {
             <p onClick={(e) => {
                 props.cbCurrGroup(props.name)
                 checkActiveBtn(e)
-            }} className={(props.name === 'Мой день')
+            }} className={(props.name === props.currGroupName)
                 ? styles.groupName + " " + styles.activeBtn
                 : styles.groupName}>{props.name}</p>
+            <img onClick={() => {
+                props.cbDeleteGroup(props.name)
+            }} className={styles.iconGroupDelete} src={bucket} alt=""/>
         </div>
     );
 }

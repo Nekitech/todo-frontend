@@ -19,9 +19,27 @@ function App() {
         setGroups([newGroup, ...groups])
     }
 
+    const deleteGroup = (groupName) => {
+        if(groups.length === 1) return;
+        if(groupName === currGroupName) {
+            changeCurrGroup(groups.filter(g => g.nameGroup !== groupName)[0].nameGroup)
+            setGroups(groups.filter(g => g.nameGroup !== groupName))
+
+        }
+        else{
+            setGroups(groups.filter(g => g.nameGroup !== groupName))
+        }
+
+
+    }
+
     return (
         <div className={styles.app}>
-            <SideMenuGroup listGroups={groups} cbAddGroup={addGroup} cbCurrGroup={changeCurrGroup}/>
+            <SideMenuGroup listGroups={groups}
+                           cbAddGroup={addGroup}
+                           cbCurrGroup={changeCurrGroup}
+                           cbDeleteGroup={deleteGroup}
+                           currGroupName={currGroupName}/>
             <Group stateTasks={{groups, setGroups, currGroupName}}/>
         </div>
     );
