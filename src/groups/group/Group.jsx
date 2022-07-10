@@ -24,11 +24,21 @@ const Group = ({stateTasks}) => {
 
     return (
         <div className={styles.startGroup}>
-            <ListTask
-                tasksList={groups.filter(g => g.nameGroup === currGroupName)[0].tasks}
-                removeTask={deleteTask}
-                changeTask={changeTask}/>
-            <AddTask addT={newTask}/>
+            {
+                (groups.length !== 0)
+                ? (
+                    <>
+                        <ListTask
+                            tasksList={groups.filter(g => g.nameGroup === currGroupName)[0]?.tasks}
+                            removeTask={deleteTask}
+                            changeTask={changeTask}/>
+                        <AddTask addT={newTask}/>
+                    </>
+
+                )
+                : <h1>Нет групп</h1>
+            }
+
         </div>
     );
 };

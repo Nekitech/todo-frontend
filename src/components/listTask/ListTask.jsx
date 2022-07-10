@@ -7,15 +7,15 @@ import UncompleteTasks from "../uncompleteTasks/UncompleteTasks";
 function ListTask(props) {
     return (
         <div className={styles.listTask}>
-            <NeedTodoTasks needTasks={props.tasksList.filter(task => task.status === 'needTodo')}
+            <NeedTodoTasks needTasks={props.tasksList?.filter(task => task.status === 'needTodo')}
                            removeTask={props.removeTask}
                            changeTask={props.changeTask}/>
 
-            <CompleteTasks compTasks={props.tasksList.filter(task => task.status === 'complete')}
+            <CompleteTasks compTasks={props.tasksList?.filter(task => task.status === 'complete')}
                            removeTask={props.removeTask}
                            changeTask={props.changeTask}/>
 
-            <UncompleteTasks uncompTasks={props.tasksList.filter(task => task.status === 'uncomplete')}
+            <UncompleteTasks uncompTasks={props.tasksList?.filter(task => task.status === 'uncomplete')}
                              removeTask={props.removeTask}/>
         </div>
     );

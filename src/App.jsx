@@ -9,7 +9,7 @@ import {data} from './assets/data';
 
 function App() {
     const [groups, setGroups] = useState(data)
-    const [currGroupName, setCurrGroupName] = useState(groups[0].nameGroup);
+    const [currGroupName, setCurrGroupName] = useState(groups[0]?.nameGroup || '');
 
     const changeCurrGroup = (groupName) => {
         setCurrGroupName(groupName)
@@ -17,10 +17,16 @@ function App() {
 
     const addGroup = (newGroup) => {
         setGroups([newGroup, ...groups])
+        if(groups.length === 0) {
+            setCurrGroupName(newGroup.nameGroup)
+        }
     }
 
     const deleteGroup = (groupName) => {
-        if(groups.length === 1) return;
+        if(groups.length === 1) {
+            setGroups([])
+            return
+        }
         if(groupName === currGroupName) {
             changeCurrGroup(groups.filter(g => g.nameGroup !== groupName)[0].nameGroup)
             setGroups(groups.filter(g => g.nameGroup !== groupName))
@@ -29,8 +35,6 @@ function App() {
         else{
             setGroups(groups.filter(g => g.nameGroup !== groupName))
         }
-
-
     }
 
     return (
