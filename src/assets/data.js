@@ -1,21 +1,25 @@
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 exports.data = [
     {
-        idGroup: 1,
+        idGroup: Date.now() + getRandomInt(10000),
         nameGroup: 'Мой день',
         tasks: [
             {
-                id: 1,
+                id: Date.now() + getRandomInt(10000),
                 text: "Завтра сходить в магазин, купить хлеба",
                 status: "needTodo"
             }
         ]
     },
     {
-        idGroup: 2,
+        idGroup: Date.now() + getRandomInt(10000),
         nameGroup: "Моя жизнь",
         tasks: [
             {
-                id: "1",
+                id: Date.now() + getRandomInt(10000),
                 text: "Завтра сходить в магазин, купить молока",
                 status: "needTodo"
             }

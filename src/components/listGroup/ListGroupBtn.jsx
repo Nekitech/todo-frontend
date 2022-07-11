@@ -3,7 +3,6 @@ import styles from "./ListGroupBtn.module.css";
 import GroupBtn from "../groupBtn/GroupBtn";
 
 function ListGroupBtn(props) {
-
     return (
         <div className={styles.listGroup}>
             {
@@ -11,9 +10,11 @@ function ListGroupBtn(props) {
                     <GroupBtn
                         name={g.nameGroup}
                         key={g.idGroup}
+                        idGroup={g.idGroup}
                         cbCurrGroup={props.cbCurrGroup}
                         cbDeleteGroup={props.cbDeleteGroup}
-                        currGroupName={props.currGroupName}/>
+                        currGroupName={props.currGroupName}
+                        currGroupId={props.currGroupId}/>
                 )
             }
         </div>

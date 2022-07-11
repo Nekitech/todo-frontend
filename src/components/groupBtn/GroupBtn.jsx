@@ -13,18 +13,18 @@ function GroupBtn(props) {
         )
         e.currentTarget.classList.add(`${styles.activeBtn}`)
     }
-
     return (
         <div className={styles.groupBtn}>
             <img className={styles.iconGroup} src={groupIcon} alt=""/>
             <p onClick={(e) => {
-                props.cbCurrGroup(props.name)
+                props.cbCurrGroup(props.idGroup)
                 checkActiveBtn(e)
-            }} className={(props.name === props.currGroupName)
+            }}
+               className={(props.idGroup === props.currGroupId)
                 ? styles.groupName + " " + styles.activeBtn
                 : styles.groupName}>{props.name}</p>
             <img onClick={() => {
-                props.cbDeleteGroup(props.name)
+                props.cbDeleteGroup(props.idGroup )
             }} className={styles.iconGroupDelete} src={bucket} alt=""/>
         </div>
     );

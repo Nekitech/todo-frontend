@@ -10,30 +10,31 @@ import {data} from './assets/data';
 function App() {
     const [groups, setGroups] = useState(data)
     const [currGroupName, setCurrGroupName] = useState(groups[0]?.nameGroup || '');
+    const [currGroupId, setCurrGroupId] = useState(groups[0]?.idGroup || '');
 
-    const changeCurrGroup = (groupName) => {
-        setCurrGroupName(groupName)
+    const changeCurrGroup = (groupId) => {
+        setCurrGroupId(groupId)
     }
 
     const addGroup = (newGroup) => {
         setGroups([newGroup, ...groups])
         if(groups.length === 0) {
-            setCurrGroupName(newGroup.nameGroup)
+            setCurrGroupId(newGroup.idGroup)
         }
     }
 
-    const deleteGroup = (groupName) => {
+    const deleteGroup = (groupId) => {
         if(groups.length === 1) {
             setGroups([])
             return
         }
-        if(groupName === currGroupName) {
-            changeCurrGroup(groups.filter(g => g.nameGroup !== groupName)[0].nameGroup)
-            setGroups(groups.filter(g => g.nameGroup !== groupName))
+        if(groupId === currGroupId) {
+            changeCurrGroup(groups.filter(g => g.idGroup !== groupId)[0].idGroup)
+            setGroups(groups.filter(g => g.idGroup !== groupId))
 
         }
         else{
-            setGroups(groups.filter(g => g.nameGroup !== groupName))
+            setGroups(groups.filter(g => g.idGroup !== groupId))
         }
     }
 
@@ -43,8 +44,9 @@ function App() {
                            cbAddGroup={addGroup}
                            cbCurrGroup={changeCurrGroup}
                            cbDeleteGroup={deleteGroup}
-                           currGroupName={currGroupName}/>
-            <Group stateTasks={{groups, setGroups, currGroupName}}/>
+                           currGroupName={currGroupName}
+                           currGroupId={currGroupId}/>
+            <Group stateTasks={{groups, setGroups, currGroupId}}/>
         </div>
     );
 }
