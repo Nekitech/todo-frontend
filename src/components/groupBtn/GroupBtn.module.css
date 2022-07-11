@@ -8,6 +8,7 @@
     width: 20px;
     height: 43px;
     align-self: end;
+    cursor: grab;
 }
 .iconGroupDelete {
     width: 50px;

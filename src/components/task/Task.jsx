@@ -5,9 +5,17 @@ import bucket from '../../img/bucket.svg'
 import radioActive from '../../img/radioBtnActive.svg'
 import radioUnactive from '../../img/radioBtnUnactive.svg'
 
-function Task(props) {
+function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
+
     return (
-        <div className={styles.task}>
+        <div
+            draggable={draggable}
+            onDragStart={onDragStart}
+            onDragLeave={onDragLeave}
+            onDragEnd={onDragEnd}
+            onDragOver={onDragOver}
+            onDrop={onDrop}
+            className={styles.task}>
             <div className={styles.task__container}>
                 <img className={styles.task__iconRadio} src={(props.task.status === 'needTodo') ? radioUnactive : (props.task.status === 'complete') ? radioActive : ''} onClick={(e) => {
                     if(props.task.status === 'needTodo') {

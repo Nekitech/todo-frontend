@@ -9,14 +9,17 @@ function ListTask(props) {
         <div className={styles.listTask}>
             <NeedTodoTasks needTasks={props.tasksList?.filter(task => task.status === 'needTodo')}
                            removeTask={props.removeTask}
-                           changeTask={props.changeTask}/>
+                           changeTask={props.changeTask}
+                           changePlaceTask={props.changePlaceTask}/>
 
             <CompleteTasks compTasks={props.tasksList?.filter(task => task.status === 'complete')}
                            removeTask={props.removeTask}
-                           changeTask={props.changeTask}/>
+                           changeTask={props.changeTask}
+                           changePlaceTask={props.changePlaceTask}/>
 
             <UncompleteTasks uncompTasks={props.tasksList?.filter(task => task.status === 'uncomplete')}
-                             removeTask={props.removeTask}/>
+                             removeTask={props.removeTask}
+                             changePlaceTask={props.changePlaceTask}/>
         </div>
     );
 }

@@ -5,6 +5,10 @@
     border-radius: 10px;
     margin: 20px 0;
     position: relative;
+    cursor: grab;
+    transition: 0.3s all;
+    z-index: 3;
+
 }
 .task__container {
     display: flex;
@@ -18,6 +22,7 @@
     margin: 0 10px;
     font-size: 24px;
     word-break: break-word;
+    user-select: none;
 }
 .task__iconRadio {
     max-width: 36px;

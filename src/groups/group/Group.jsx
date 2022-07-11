@@ -22,6 +22,16 @@ const Group = ({stateTasks}) => {
             : g))
     }
 
+    const changePlaceTask = (currTask, task) => {
+        setGroups(groups.map(g => g.idGroup === currGroupId && g.tasks.find(t => t.id === currTask.id)
+            ? {...g, tasks: g.tasks.map(t => (t.id === task.id)
+                    ? currTask
+                    : (t.id === currTask.id)
+                        ? task : t)}
+            : g))
+        console.log(currTask, task)
+    }
+
     return (
         <div className={styles.startGroup}>
             {
@@ -31,7 +41,8 @@ const Group = ({stateTasks}) => {
                         <ListTask
                             tasksList={groups.filter(g => g.idGroup === currGroupId)[0]?.tasks}
                             removeTask={deleteTask}
-                            changeTask={changeTask}/>
+                            changeTask={changeTask}
+                            changePlaceTask={changePlaceTask}/>
                         <AddTask addT={newTask}/>
                     </>
 

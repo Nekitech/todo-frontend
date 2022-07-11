@@ -7,7 +7,11 @@ function UncompleteTasks(props) {
         <div>
             <h6 className={styles.uncompleteTasks__title}>Невыполненные</h6>
             {props.uncompTasks?.map(task =>
-                <Task task={task} key={task.id} removeTask={props.removeTask} cb={props.cb} changeTask={props.changeTask}/>
+                <Task task={task} key={task.id}
+                      removeTask={props.removeTask}
+                      cb={props.cb}
+                      changeTask={props.changeTask}
+                      changePlaceTask={props.changePlaceTask}/>
             )}
         </div>
     );
