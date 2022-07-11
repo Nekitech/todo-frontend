@@ -39,13 +39,22 @@ function App() {
         }
     }
 
+    const changePlaceGroup = (currGroup, group) => {
+        setGroups(groups.map(g => (g.idGroup === group.idGroup)
+            ? currGroup
+            : (g.idGroup === currGroup.idGroup)
+                ? group
+                : g))
+    }
+
     return (
         <div className={styles.app}>
             <SideMenuGroup listGroups={groups}
                            cbAddGroup={addGroup}
                            cbCurrGroup={changeCurrGroup}
                            cbDeleteGroup={deleteGroup}
-                           currGroupId={currGroupId}/>
+                           currGroupId={currGroupId}
+                           changePlaceGroup={changePlaceGroup}/>
             <Group stateTasks={{groups, setGroups, currGroupId}}/>
         </div>
     );

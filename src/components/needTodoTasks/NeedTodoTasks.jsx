@@ -26,8 +26,6 @@ function NeedTodoTasks(props) {
         e.currentTarget.style.transform = 'translateY(0)'
         props.changePlaceTask(currTask, task)
 
-
-
     }
     return (
         <>

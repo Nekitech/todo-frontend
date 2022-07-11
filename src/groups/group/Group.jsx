@@ -21,15 +21,14 @@ const Group = ({stateTasks}) => {
             ? {...g, tasks:  g.tasks.map(task => (task.id === taskChanged.id) ? taskChanged : task)}
             : g))
     }
-
+    // Функция для изменения положения задачи при перетаскивании через DragAndDrop
     const changePlaceTask = (currTask, task) => {
-        setGroups(groups.map(g => g.idGroup === currGroupId && g.tasks.find(t => t.id === currTask.id)
+        setGroups(groups.map(g => (g.idGroup === currGroupId)
             ? {...g, tasks: g.tasks.map(t => (t.id === task.id)
                     ? currTask
                     : (t.id === currTask.id)
                         ? task : t)}
             : g))
-        console.log(currTask, task)
     }
 
     return (

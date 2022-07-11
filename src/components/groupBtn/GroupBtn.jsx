@@ -3,7 +3,7 @@ import styles from "./GroupBtn.module.css";
 import groupIcon from "../../img/iconGroup.svg";
 import bucket from '../../img/bucket.svg'
 
-function GroupBtn(props) {
+function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
 
     const checkActiveBtn = (e) => {
         const groupText = document.querySelectorAll(`.${styles.groupName}`)
@@ -14,7 +14,14 @@ function GroupBtn(props) {
         e.currentTarget.classList.add(`${styles.activeBtn}`)
     }
     return (
-        <div className={styles.groupBtn}>
+        <div
+            draggable={draggable}
+            onDragStart={onDragStart}
+            onDragLeave={onDragLeave}
+            onDragEnd={onDragEnd}
+            onDragOver={onDragOver}
+            onDrop={onDrop}
+            className={styles.groupBtn}>
             <img className={styles.iconGroup} src={groupIcon} alt=""/>
             <p onClick={(e) => {
                 props.cbCurrGroup(props.idGroup)
