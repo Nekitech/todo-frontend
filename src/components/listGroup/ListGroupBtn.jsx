@@ -13,7 +13,6 @@ function ListGroupBtn(props) {
                         idGroup={g.idGroup}
                         cbCurrGroup={props.cbCurrGroup}
                         cbDeleteGroup={props.cbDeleteGroup}
-                        currGroupName={props.currGroupName}
                         currGroupId={props.currGroupId}/>
                 )
             }

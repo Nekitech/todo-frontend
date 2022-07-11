@@ -9,7 +9,6 @@ import {data} from './assets/data';
 
 function App() {
     const [groups, setGroups] = useState(data)
-    const [currGroupName, setCurrGroupName] = useState(groups[0]?.nameGroup || '');
     const [currGroupId, setCurrGroupId] = useState(groups[0]?.idGroup || '');
 
     const changeCurrGroup = (groupId) => {
@@ -44,7 +43,6 @@ function App() {
                            cbAddGroup={addGroup}
                            cbCurrGroup={changeCurrGroup}
                            cbDeleteGroup={deleteGroup}
-                           currGroupName={currGroupName}
                            currGroupId={currGroupId}/>
             <Group stateTasks={{groups, setGroups, currGroupId}}/>
         </div>
