@@ -1,25 +1,27 @@
 import React from 'react';
 import styles from './ListTask.module.css'
-import NeedTodoTasks from "../needTodoTasks/NeedTodoTasks";
-import CompleteTasks from "../completeTaks/CompleteTasks";
-import UncompleteTasks from "../uncompleteTasks/UncompleteTasks";
+import GroupTasks from "../groupTasks/GroupTasks";
+
 
 function ListTask(props) {
     return (
         <div className={styles.listTask}>
-            <NeedTodoTasks needTasks={props.tasksList?.filter(task => task.status === 'needTodo')}
+            <GroupTasks listTasks={props.tasksList?.filter(task => task.status === 'needTodo')}
                            removeTask={props.removeTask}
                            changeTask={props.changeTask}
-                           changePlaceTask={props.changePlaceTask}/>
+                           changePlaceTask={props.changePlaceTask}
+                           name={'Надо сделать'}/>
 
-            <CompleteTasks compTasks={props.tasksList?.filter(task => task.status === 'complete')}
+            <GroupTasks listTasks={props.tasksList?.filter(task => task.status === 'complete')}
                            removeTask={props.removeTask}
                            changeTask={props.changeTask}
-                           changePlaceTask={props.changePlaceTask}/>
+                           changePlaceTask={props.changePlaceTask}
+                           name={'Выполненные'}/>
 
-            <UncompleteTasks uncompTasks={props.tasksList?.filter(task => task.status === 'uncomplete')}
-                             removeTask={props.removeTask}
-                             changePlaceTask={props.changePlaceTask}/>
+            <GroupTasks listTasks={props.tasksList?.filter(task => task.status === 'uncomplete')}
+                           removeTask={props.removeTask}
+                           changePlaceTask={props.changePlaceTask}
+                           name={'Не выполненные'}/>
         </div>
     );
 }

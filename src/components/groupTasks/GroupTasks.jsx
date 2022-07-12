@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import styles from './NeedTodoTasks.module.css'
+import styles from './GroupTasks.module.css'
 import Task from "../task/Task";
 
 
-function NeedTodoTasks(props) {
+function GroupTasks(props) {
     const [currTask, setCurrTask] = useState(null)
     const dragStartHandler = (e, task) => {
         setCurrTask(task)
-        console.log(currTask)
     }
 
     const dragEndHandler = (e) => {
@@ -29,8 +28,10 @@ function NeedTodoTasks(props) {
     }
     return (
         <>
-            <h6 className={styles.needTodo__title}>Надо сделать</h6>
-            {props.needTasks?.map(task =>
+            <h6 className={(props.name === 'Надо сделать')
+                ? styles.groupTasks__title
+                : styles.groupTasks__title + ' ' + styles.groupTasks__titleUnderline}>{props.name}</h6>
+            {props.listTasks?.map(task =>
                 <Task draggable={true}
                       onDragStart={(e) => {dragStartHandler(e, task)}}
                       onDragLeave={(e) => {dragEndHandler(e)}}
@@ -47,4 +48,4 @@ function NeedTodoTasks(props) {
     );
 }
 
-export default NeedTodoTasks;
+export default GroupTasks;
