@@ -1,4 +1,6 @@
 import {createStore} from "redux";
-import data from './assets/data';
+import {rootReducer} from "./rootReducer";
 
-const initialState = data
+const store = createStore(rootReducer)
+console.log(store.getState())
+export default store

@@ -41,9 +41,8 @@ function ListGroupBtn(props) {
                         name={g.nameGroup}
                         key={g.idGroup}
                         idGroup={g.idGroup}
-                        cbCurrGroup={props.cbCurrGroup}
-                        cbDeleteGroup={props.cbDeleteGroup}
-                        currGroupId={props.currGroupId}/>
+                        currGroupId={props.currGroupId}
+                        cbDeleteGroup={props.cbDeleteGroup}/>
                 )
             }
         </div>

@@ -2,9 +2,11 @@ import React, {useRef} from 'react';
 import styles from "./GroupBtn.module.css";
 import groupIcon from "../../img/iconGroup.svg";
 import bucket from '../../img/bucket.svg'
+import {useDispatch} from "react-redux";
+import {setCurrGroup} from "../../redux/actions";
 
 function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
-
+    const dispatch = useDispatch();
     const checkActiveBtn = (e) => {
         const groupText = document.querySelectorAll(`.${styles.groupName}`)
         Array.from(groupText).forEach(el => (el.classList.contains(`${styles.activeBtn}`) && el !== e.currentTarget)
@@ -24,7 +26,7 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
             className={styles.groupBtn}>
             <img className={styles.iconGroup} src={groupIcon} alt=""/>
             <p onClick={(e) => {
-                props.cbCurrGroup(props.idGroup)
+                dispatch(setCurrGroup(props.idGroup))
                 checkActiveBtn(e)
             }}
                className={(props.idGroup === props.currGroupId)

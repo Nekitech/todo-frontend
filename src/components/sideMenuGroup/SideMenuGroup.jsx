@@ -17,9 +17,8 @@ function SideMenuGroup(props) {
             <div className={styles.sideMenu__container}>
                 <AddGroup cbAddGroup={props.cbAddGroup}/>
                 <ListGroupBtn listGroups={props.listGroups}
-                              cbCurrGroup={props.cbCurrGroup}
-                              cbDeleteGroup={props.cbDeleteGroup}
                               currGroupId={props.currGroupId}
+                              cbDeleteGroup={props.cbDeleteGroup}
                               changePlaceGroup={props.changePlaceGroup}/>
             </div>
         </div>

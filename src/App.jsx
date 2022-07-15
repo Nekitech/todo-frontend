@@ -2,23 +2,23 @@ import React, {useState} from 'react';
 import styles from './App.module.css';
 import Group from "./groups/group/Group";
 import SideMenuGroup from "./components/sideMenuGroup/SideMenuGroup";
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrGroup, setAddGroup} from "./redux/actions";
 
 // подключение данных
 import data from './assets/data.js';
 
 function App() {
+    const dispatch = useDispatch();
     const [groups, setGroups] = useState(data)
-    const [currGroupId, setCurrGroupId] = useState(groups[0]?.idGroup || '');
 
-    const changeCurrGroup = (groupId) => {
-        setCurrGroupId(groupId)
-    }
+    let currGroupId = useSelector(state => state.currGroupReducer.currGroupId) || data[0]?.idGroup;
 
     const addGroup = (newGroup) => {
         setGroups([newGroup, ...groups])
         // При добавлении первой группы она становится активной
         if(groups.length === 0) {
-            setCurrGroupId(newGroup.idGroup)
+            dispatch(setCurrGroup(newGroup.idGroup))
         }
     }
 
@@ -30,9 +30,8 @@ function App() {
         }
         if(groupId === currGroupId) {
             // при удалении активной группы, активной становится первая группа
-            changeCurrGroup(groups.filter(g => g.idGroup !== groupId)[0].idGroup)
+            dispatch(setCurrGroup(groups.filter(g => g.idGroup !== groupId)[0].idGroup))
             setGroups(groups.filter(g => g.idGroup !== groupId))
-
         }
         else{
             setGroups(groups.filter(g => g.idGroup !== groupId))
@@ -51,7 +50,6 @@ function App() {
         <div className={styles.app}>
             <SideMenuGroup listGroups={groups}
                            cbAddGroup={addGroup}
-                           cbCurrGroup={changeCurrGroup}
                            cbDeleteGroup={deleteGroup}
                            currGroupId={currGroupId}
                            changePlaceGroup={changePlaceGroup}/>
