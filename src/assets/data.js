@@ -1,28 +1,26 @@
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-
-exports.data = [
+import uniqid from 'uniqid';
+const data = [
     {
-        idGroup: Date.now() + getRandomInt(10000),
+        idGroup: uniqid(),
         nameGroup: 'Мой день',
         tasks: [
             {
-                id: Date.now() + getRandomInt(10000),
+                id: uniqid(),
                 text: "Завтра сходить в магазин, купить хлеба",
                 status: "needTodo"
             }
         ]
     },
     {
-        idGroup: Date.now() + getRandomInt(10000),
+        idGroup: uniqid(),
         nameGroup: "Моя жизнь",
         tasks: [
             {
-                id: Date.now() + getRandomInt(10000),
+                id: uniqid(),
                 text: "Завтра сходить в магазин, купить молока",
                 status: "needTodo"
             }
         ]
     }
 ]
+export default data;

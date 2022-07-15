@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styles from './App.module.css';
 import Group from "./groups/group/Group";
 import SideMenuGroup from "./components/sideMenuGroup/SideMenuGroup";
 
 // подключение данных
-import {data} from './assets/data';
+import data from './assets/data.js';
 
 function App() {
     const [groups, setGroups] = useState(data)

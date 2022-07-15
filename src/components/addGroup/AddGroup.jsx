@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import styles from './AddGroup.module.css'
 import cross from '../../img/cross.svg'
+import uniqid from "uniqid";
 
 function AddGroup(props) {
     const [nameGroup, setNameGroup] = useState('')
 
     const handleAddGroup = () => {
         const newGroup = {
-            idGroup: Date.now(),
+            idGroup: uniqid(),
             nameGroup: nameGroup,
             tasks: []
         }

@@ -12,7 +12,8 @@ const Group = ({stateTasks}) => {
     }
     const deleteTask = (task) => {
         setGroups(groups.map(g => g.idGroup === currGroupId
-            ? {...g, tasks: g.tasks.filter(t => t.id !== task.id)}
+            ? {...g, tasks: [...g.tasks.splice(0, g.tasks.indexOf(task)),
+                    ...g.tasks.splice(g.tasks.indexOf(task) + 1)]}
             : g))
     }
     // Функция для отслеживания изменения статуса задачи и изменении соответ. задачи в списке задач
@@ -34,7 +35,7 @@ const Group = ({stateTasks}) => {
     return (
         <div className={styles.startGroup}>
             {
-                (groups.length !== 0)
+                (!!groups.length)
                 ? (
                     <>
                         <ListTask

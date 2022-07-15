@@ -1,14 +1,15 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './AddTask.module.css'
 import cross from '../../img/cross.svg'
 import alarm from '../../img/alarm.svg'
+import uniqid from "uniqid";
 
 function AddTask({addT}) {
     let [textArea, setTextArea] = useState('')
 
     const handleAddNewTask = () => {
         const newTasks = {
-            'id': Date.now(),
+            'id': uniqid(),
             'text': textArea,
             'status': 'needTodo'
         }
