@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import styles from "./GroupBtn.module.css";
 import groupIcon from "../../img/iconGroup.svg";
 import bucket from '../../img/bucket.svg'
@@ -28,6 +28,7 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
             className={styles.groupBtn}>
             <img className={styles.iconGroup} src={groupIcon} alt=""/>
             <p onClick={(e) => {
+                console.log('click')
                 dispatch(setCurrGroup(props.idGroup))
                 checkActiveBtn(e)
             }}

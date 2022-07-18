@@ -41,7 +41,8 @@ function GroupTasks(props) {
                       onDragOver={(e) => {dragOverHandler(e)}}
                       onDrop={(e) => {dropHandler(e, task)}}
 
-                      task={task} key={task.id}
+                      task={task}
+                      key={task.id}
                       />
             )}
         </>

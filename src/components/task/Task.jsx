@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './Task.module.css'
 import failImg from '../../img/failImg.svg'
 import bucket from '../../img/bucket.svg'
@@ -22,7 +22,6 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                 <img className={styles.task__iconRadio} src={(props.task.status === 'needTodo') ? radioUnactive : (props.task.status === 'complete') ? radioActive : ''} onClick={(e) => {
                     if(props.task.status === 'needTodo') {
                         dispatch(setChangeStatusTask(props.task, 'complete'))
-
                     }
                     else if(props.task.status === 'complete') {
                         dispatch(setChangeStatusTask(props.task, 'needTodo'))
@@ -47,7 +46,8 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     :
                     null
                 }
-                <img onClick={() => dispatch(setDeleteTask(props.task))} className={styles.task__bucket} src={bucket} alt="icon"/>
+                <img onClick={() => dispatch(setDeleteTask(props.task))}
+                     className={styles.task__bucket} src={bucket} alt="icon"/>
             </div>
             {
                 (props.task.status === 'complete' || props.task.status === 'uncomplete')

@@ -18,7 +18,7 @@ export function groupsReducer(state = initialState, action) {
     switch (action.type) {
         case SET_CURR_GROUP:
             console.log(action.payload.idGroup)
-            return {currGroupId: action.payload.idGroup, ...state}
+            return {currGroupId: action.payload.idGroup, data: [...state.data]}
 
         case ADD_GROUP:
             if(state.data.length === 0) {
@@ -27,7 +27,7 @@ export function groupsReducer(state = initialState, action) {
                     data: [...state.data, action.payload.newGroup]
                 }
             }
-            return {...state.data, data: [...state.data, action.payload.newGroup]}
+            return {...state, data: [...state.data, action.payload.newGroup]}
 
         case DELETE_GROUP:
             if (state.data.length === 1) {
@@ -46,9 +46,9 @@ export function groupsReducer(state = initialState, action) {
             }
 
         case CHANGE_PLACE_GROUP:
-            return {...state, data: state.data.map(g => (g.idGroup === action.payload.group.id)
+            return {...state, data: state.data.map(g => (g.idGroup === action.payload.group.idGroup)
                 ? action.payload.currGroup
-                : (g.idGroup === action.payload.currGroup.id)
+                : (g.idGroup === action.payload.currGroup.idGroup)
                     ? action.payload.group
                     : g)}
 

@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import styles from './SideMenuGroup.module.css'
 import sideMenuIcon from '../../img/SideMenuIcon.svg'
 import ListGroupBtn from "../listGroup/ListGroupBtn";
