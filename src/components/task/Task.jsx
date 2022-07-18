@@ -4,9 +4,11 @@ import failImg from '../../img/failImg.svg'
 import bucket from '../../img/bucket.svg'
 import radioActive from '../../img/radioBtnActive.svg'
 import radioUnactive from '../../img/radioBtnUnactive.svg'
+import {useDispatch} from "react-redux";
+import {setChangeStatusTask, setDeleteTask} from "../../redux/actions";
 
 function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
-
+    const dispatch = useDispatch();
     return (
         <div
             draggable={draggable}
@@ -19,10 +21,11 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
             <div className={styles.task__container}>
                 <img className={styles.task__iconRadio} src={(props.task.status === 'needTodo') ? radioUnactive : (props.task.status === 'complete') ? radioActive : ''} onClick={(e) => {
                     if(props.task.status === 'needTodo') {
-                        props.changeTask(props.task.status = 'complete')
+                        dispatch(setChangeStatusTask(props.task, 'complete'))
+
                     }
                     else if(props.task.status === 'complete') {
-                        props.changeTask(props.task.status = 'needTodo')
+                        dispatch(setChangeStatusTask(props.task, 'needTodo'))
                     }
                 }} alt=""/>
                 <p className={styles.task__text} style={(props.task.status === 'complete')
@@ -34,17 +37,17 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     (
                         <img onClick={(e) => {
                             if(props.task.status === 'needTodo') {
-                                props.changeTask(props.task.status = 'uncomplete')
+                                dispatch(setChangeStatusTask(props.task , 'uncomplete'))
                             }
                             else {
-                                props.changeTask(props.task.status = 'needTodo')
+                                dispatch(setChangeStatusTask(props.task, 'needTodo'))
                             }
                         }} className={styles.task__fail} src={failImg} alt="icon"/>
                     )
                     :
                     null
                 }
-                <img onClick={() => props.removeTask(props.task)} className={styles.task__bucket} src={bucket} alt="icon"/>
+                <img onClick={() => dispatch(setDeleteTask(props.task))} className={styles.task__bucket} src={bucket} alt="icon"/>
             </div>
             {
                 (props.task.status === 'complete' || props.task.status === 'uncomplete')

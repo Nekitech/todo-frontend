@@ -2,11 +2,13 @@ import React, {useRef} from 'react';
 import styles from "./GroupBtn.module.css";
 import groupIcon from "../../img/iconGroup.svg";
 import bucket from '../../img/bucket.svg'
-import {useDispatch} from "react-redux";
-import {setCurrGroup} from "../../redux/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrGroup, setDeleteGroup} from "../../redux/actions";
 
 function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
+    const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
+
     const checkActiveBtn = (e) => {
         const groupText = document.querySelectorAll(`.${styles.groupName}`)
         Array.from(groupText).forEach(el => (el.classList.contains(`${styles.activeBtn}`) && el !== e.currentTarget)
@@ -29,11 +31,11 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
                 dispatch(setCurrGroup(props.idGroup))
                 checkActiveBtn(e)
             }}
-               className={(props.idGroup === props.currGroupId)
+               className={(props.idGroup === currGroupId)
                 ? styles.groupName + " " + styles.activeBtn
                 : styles.groupName}>{props.name}</p>
             <img onClick={() => {
-                props.cbDeleteGroup(props.idGroup )
+                dispatch(setDeleteGroup(props.idGroup))
             }} className={styles.iconGroupDelete} src={bucket} alt=""/>
         </div>
     );

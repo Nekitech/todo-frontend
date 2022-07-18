@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import styles from './GroupTasks.module.css'
 import Task from "../task/Task";
-
+import {useDispatch} from "react-redux";
+import {setChangePlaceTask} from "../../redux/actions";
 
 function GroupTasks(props) {
     const [currTask, setCurrTask] = useState(null)
+    const dispatch = useDispatch();
     const dragStartHandler = (e, task) => {
         setCurrTask(task)
     }
@@ -23,7 +25,7 @@ function GroupTasks(props) {
         e.preventDefault()
         e.currentTarget.style.background = '#9D8E8E'
         e.currentTarget.style.transform = 'translateY(0)'
-        props.changePlaceTask(currTask, task)
+        dispatch(setChangePlaceTask(currTask, task))
 
     }
     return (
@@ -40,9 +42,7 @@ function GroupTasks(props) {
                       onDrop={(e) => {dropHandler(e, task)}}
 
                       task={task} key={task.id}
-                      removeTask={props.removeTask}
-                      changeTask={props.changeTask}
-                      changePlaceTask={props.changePlaceTask}/>
+                      />
             )}
         </>
     );

@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './ListTask.module.css'
 import GroupTasks from "../groupTasks/GroupTasks";
+import {useSelector} from "react-redux";
 
 
 function ListTask(props) {
+
     return (
         <div className={styles.listTask}>
             <GroupTasks listTasks={props.tasksList?.filter(task => task.status === 'needTodo')}

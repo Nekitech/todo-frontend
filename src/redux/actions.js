@@ -12,49 +12,49 @@ import {
 export function setCurrGroup(idGroup) {
     return {
         type: SET_CURR_GROUP,
-        payload: idGroup
+        payload: {idGroup}
     }
 }
 
 export function setAddGroup(newGroup) {
     return {
         type: ADD_GROUP,
-        payload: newGroup
+        payload: {newGroup}
     }
 }
 
-export function setDeleteGroup(groupId, currGroupId) {
+export function setDeleteGroup(groupId) {
     return {
         type: DELETE_GROUP,
-        payload: {groupId, currGroupId}
+        payload: {groupId}
     }
 }
 
-export function setChangePlaceGroup(currId, groupId) {
+export function setChangePlaceGroup(currGroup, group) {
     return {
         type: CHANGE_PLACE_GROUP,
-        payload: {currId, groupId}
+        payload: {currGroup, group}
     }
 }
 
-export function setAddTask(newTask, currGroupId) {
+export function setAddTask(newTask) {
     return {
         type: ADD_TASK,
-        payload: {newTask, currGroupId}
+        payload: {newTask}
     }
 }
 
-export function setDeleteTask(newTask) {
+export function setDeleteTask(task) {
     return {
         type: DELETE_TASK,
-        payload: newTask
+        payload: {task}
     }
 }
 
-export function setChangeStatusTask(taskChanged) {
+export function setChangeStatusTask(taskChanged, status) {
     return {
         type: CHANGE_STATUS_TASK,
-        payload: taskChanged
+        payload: {taskChanged, status}
     }
 }
 

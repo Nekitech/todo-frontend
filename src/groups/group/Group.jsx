@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Group.module.css'
 import ListTask from "../../components/listTask/ListTask";
 import AddTask from "../../components/addTask/AddTask";
 
-const Group = () => {
+import {useSelector} from "react-redux";
 
+const Group = () => {
+    const groups = useSelector(state => state.groupsReducer.data);
+    const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
+    console.log(groups, currGroupId)
 
     // const newTask = (newTask) => {
     //     setGroups(groups.map(g => g.idGroup === currGroupId

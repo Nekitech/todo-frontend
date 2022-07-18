@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import styles from "./ListGroupBtn.module.css";
 import GroupBtn from "../groupBtn/GroupBtn";
+import {useDispatch, useSelector} from "react-redux";
+import {setChangePlaceGroup} from "../../redux/actions";
 
 
 function ListGroupBtn(props) {
+    const dispatch = useDispatch();
+    const groups = useSelector(state => state.groupsReducer.data);
+
     const [currGroup, setCurrGroup] = useState(null)
 
     const dragStartHandler = (e, group) => {
@@ -23,13 +28,13 @@ function ListGroupBtn(props) {
         e.preventDefault()
         e.currentTarget.style.background = '#A47878'
         e.currentTarget.style.transform = 'translateY(0)'
-        props.changePlaceGroup(currGroup, group)
+        dispatch(setChangePlaceGroup(currGroup, group))
 
     }
     return (
         <div className={styles.listGroup}>
             {
-                props.listGroups.map((g) =>
+                groups.map((g) =>
                     <GroupBtn
                         draggable={true}
                         onDragStart={(e) => {dragStartHandler(e, g)}}
@@ -41,8 +46,7 @@ function ListGroupBtn(props) {
                         name={g.nameGroup}
                         key={g.idGroup}
                         idGroup={g.idGroup}
-                        currGroupId={props.currGroupId}
-                        cbDeleteGroup={props.cbDeleteGroup}/>
+                        />
                 )
             }
         </div>

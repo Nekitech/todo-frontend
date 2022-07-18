@@ -5,7 +5,7 @@ import alarm from '../../img/alarm.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
 import {setAddTask} from "../../redux/actions";
-import store from "../../redux/store";
+
 
 function AddTask({addT}) {
     const dispatch = useDispatch();
@@ -16,10 +16,10 @@ function AddTask({addT}) {
             text: textArea,
             status: 'needTodo'
         }
-
-        dispatch(setAddTask(newTask, store.getState().currGroupReducer))
+        console.log(newTask)
+        dispatch(setAddTask(newTask))
         setTextArea('')
-        console.log(newTask, store.getState().currGroupReducer, store.getState())
+
     }
 
     return (

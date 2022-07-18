@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import styles from './App.module.css';
 import Group from "./groups/group/Group";
 import SideMenuGroup from "./components/sideMenuGroup/SideMenuGroup";
-import {useDispatch, useSelector} from "react-redux";
-import {setCurrGroup, setAddGroup} from "./redux/actions";
+
 
 // подключение данных
 import data from './assets/data.js';

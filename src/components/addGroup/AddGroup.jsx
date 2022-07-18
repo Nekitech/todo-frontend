@@ -2,8 +2,11 @@ import React, {useState} from 'react';
 import styles from './AddGroup.module.css'
 import cross from '../../img/cross.svg'
 import uniqid from "uniqid";
+import {useDispatch} from "react-redux";
+import {setAddGroup} from "../../redux/actions";
 
 function AddGroup(props) {
+    const dispatch = useDispatch();
     const [nameGroup, setNameGroup] = useState('')
 
     const handleAddGroup = () => {
@@ -12,7 +15,7 @@ function AddGroup(props) {
             nameGroup: nameGroup,
             tasks: []
         }
-        props.cbAddGroup(newGroup)
+        dispatch(setAddGroup(newGroup))
         setNameGroup('')
     }
     return (

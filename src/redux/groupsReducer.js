@@ -1,36 +1,87 @@
 import data from "../assets/data";
-import {ADD_GROUP, DELETE_GROUP, ADD_TASK, DELETE_TASK} from "./types";
+import {ADD_GROUP,
+    DELETE_GROUP,
+    SET_CURR_GROUP,
+    CHANGE_PLACE_GROUP,
+    ADD_TASK,
+    DELETE_TASK,
+    CHANGE_STATUS_TASK,
+     CHANGE_PLACE_TASK
+    } from "./types";
 
-export function groupsReducer(state = data, action) {
+const initialState = {
+    currGroupId: data.data[0].idGroup,
+    data: data.data
+}
+
+export function groupsReducer(state = initialState, action) {
     switch (action.type) {
+        case SET_CURR_GROUP:
+            console.log(action.payload.idGroup)
+            return {currGroupId: action.payload.idGroup, ...state}
+
         case ADD_GROUP:
-            return {...state, ...action.payload}
+            if(state.data.length === 0) {
+                return {
+                    currGroupId: action.payload.newGroup.idGroup,
+                    data: [...state.data, action.payload.newGroup]
+                }
+            }
+            return {...state.data, data: [...state.data, action.payload.newGroup]}
 
         case DELETE_GROUP:
-            if (state.length === 1) {
-                state = []
-                return
+            if (state.data.length === 1) {
+
+                return {...state, data: []}
             }
-            if (action.payload.groupId === action.payload.currGroupId) {
+            if (action.payload.groupId === state.currGroupId) {
                 // при удалении активной группы, активной становится первая группа
-                 store.getState().filter(g => g.idGroup !== action.payload.groupId)[0].idGroup
-                return state.filter(g => g.idGroup !== action.payload.groupId)
+
+                return {currGroupId: state.data.filter(g => g.idGroup !== action.payload.groupId)[0].idGroup,
+                    data: state.data.filter(g => g.idGroup !== action.payload.groupId)}
 
             } else {
-                setGroups(groups.filter(g => g.idGroup !== groupId))
+                return {...state,
+                    data: state.data.filter(g => g.idGroup !== action.payload.groupId)}
             }
-            return {...state, ...action.payload}
+
+        case CHANGE_PLACE_GROUP:
+            return {...state, data: state.data.map(g => (g.idGroup === action.payload.group.id)
+                ? action.payload.currGroup
+                : (g.idGroup === action.payload.currGroup.id)
+                    ? action.payload.group
+                    : g)}
 
         case ADD_TASK:
-            return state.map(g => g.idGroup === action.payload.currGroupId
+            console.log(action.payload.newTask)
+            return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
                 ? {...g, tasks: [...g.tasks, action.payload.newTask]}
-                : g);
+                : g)}
 
         case DELETE_TASK:
-            return state.filter(task => task.id !== action.payload);
 
+            return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
+                ? {...g, tasks: [...g.tasks.splice(0, g.tasks.indexOf(action.payload.task)),
+                        ...g.tasks.splice(g.tasks.indexOf(action.payload.task) + 1)]}
+                : g)}
+
+        case CHANGE_STATUS_TASK:
+            console.log(action.payload)
+            return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
+                ? {...g, tasks:  g.tasks.map(task => (task.id === action.payload.taskChanged.id)
+                            ? {...task, status: action.payload.status} : task)}
+                : g)}
+
+        case CHANGE_PLACE_TASK:
+            return {...state, data: state.data.map(g => (g.idGroup === state.currGroupId)
+                ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.task.id)
+                        ? action.payload.currTask
+                        : (t.id === action.payload.currTask.id)
+                            ? action.payload.task : t)}
+                : g)}
         default:
             return state
+
     }
 
 }
