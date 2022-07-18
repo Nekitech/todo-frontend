@@ -3,18 +3,23 @@ import styles from './AddTask.module.css'
 import cross from '../../img/cross.svg'
 import alarm from '../../img/alarm.svg'
 import uniqid from "uniqid";
+import {useDispatch} from "react-redux";
+import {setAddTask} from "../../redux/actions";
+import store from "../../redux/store";
 
 function AddTask({addT}) {
+    const dispatch = useDispatch();
     let [textArea, setTextArea] = useState('')
-
     const handleAddNewTask = () => {
-        const newTasks = {
-            'id': uniqid(),
-            'text': textArea,
-            'status': 'needTodo'
+        const newTask = {
+            id: uniqid(),
+            text: textArea,
+            status: 'needTodo'
         }
-        addT(newTasks)
+
+        dispatch(setAddTask(newTask, store.getState().currGroupReducer))
         setTextArea('')
+        console.log(newTask, store.getState().currGroupReducer, store.getState())
     }
 
     return (
