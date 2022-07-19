@@ -1,13 +1,14 @@
 import data from "../assets/data";
-import {ADD_GROUP,
+import {
+    ADD_GROUP,
     DELETE_GROUP,
     SET_CURR_GROUP,
     CHANGE_PLACE_GROUP,
     ADD_TASK,
     DELETE_TASK,
     CHANGE_STATUS_TASK,
-     CHANGE_PLACE_TASK
-    } from "./types";
+    CHANGE_PLACE_TASK, SET_CURR_TASK
+} from "./types";
 
 const initialState = {
     currGroupId: data.data[0].idGroup,
@@ -17,7 +18,6 @@ const initialState = {
 export function groupsReducer(state = initialState, action) {
     switch (action.type) {
         case SET_CURR_GROUP:
-            console.log(action.payload.idGroup)
             return {currGroupId: action.payload.idGroup, data: [...state.data]}
 
         case ADD_GROUP:
@@ -52,8 +52,11 @@ export function groupsReducer(state = initialState, action) {
                     ? action.payload.group
                     : g)}
 
+        case SET_CURR_TASK:
+            console.log({...state, currTaskId: action.payload.idTask, data: [...state.data]})
+            return {...state, currTaskId: action.payload.idGroup, data: [...state.data]}
+
         case ADD_TASK:
-            console.log(action.payload.newTask)
             return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
                 ? {...g, tasks: [...g.tasks, action.payload.newTask]}
                 : g)}
@@ -66,7 +69,6 @@ export function groupsReducer(state = initialState, action) {
                 : g)}
 
         case CHANGE_STATUS_TASK:
-            console.log(action.payload)
             return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
                 ? {...g, tasks:  g.tasks.map(task => (task.id === action.payload.taskChanged.id)
                             ? {...task, status: action.payload.status} : task)}

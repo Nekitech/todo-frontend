@@ -3,7 +3,10 @@ export const ADD_GROUP = 'ADD_GROUP';
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const CHANGE_PLACE_GROUP = 'CHANGE_PLACE_GROUP';
 
+export const SET_CURR_TASK = 'SET_CURR_TASK';
 export const ADD_TASK = 'ADD_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const CHANGE_PLACE_TASK = 'CHANGE_PLACE_TASK';
 export const CHANGE_STATUS_TASK = 'CHANGE_STATUS_TASK';
+
+export const SET_MENU_TASK_ACTIVE = 'SET_MENU_TASK_ACTIVE';

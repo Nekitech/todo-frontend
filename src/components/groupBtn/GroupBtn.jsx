@@ -3,10 +3,11 @@ import styles from "./GroupBtn.module.css";
 import groupIcon from "../../img/iconGroup.svg";
 import bucket from '../../img/bucket.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {setCurrGroup, setDeleteGroup} from "../../redux/actions";
+import {setCurrGroup, setDeleteGroup, setMenuTaskActive} from "../../redux/actions";
 
 function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
+    const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
 
     const checkActiveBtn = (e) => {
@@ -28,9 +29,12 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
             className={styles.groupBtn}>
             <img className={styles.iconGroup} src={groupIcon} alt=""/>
             <p onClick={(e) => {
-                console.log('click')
+                if(activeMenuTask && props.idGroup !== currGroupId) {
+                    dispatch(setMenuTaskActive(!activeMenuTask))
+                }
                 dispatch(setCurrGroup(props.idGroup))
                 checkActiveBtn(e)
+
             }}
                className={(props.idGroup === currGroupId)
                 ? styles.groupName + " " + styles.activeBtn

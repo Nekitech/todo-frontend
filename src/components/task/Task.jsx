@@ -4,11 +4,12 @@ import failImg from '../../img/failImg.svg'
 import bucket from '../../img/bucket.svg'
 import radioActive from '../../img/radioBtnActive.svg'
 import radioUnactive from '../../img/radioBtnUnactive.svg'
-import {useDispatch} from "react-redux";
-import {setChangeStatusTask, setDeleteTask} from "../../redux/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {setChangeStatusTask, setCurrTask, setDeleteTask, setMenuTaskActive} from "../../redux/actions";
 
 function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
+    const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
     return (
         <div
             draggable={draggable}
@@ -27,7 +28,19 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                         dispatch(setChangeStatusTask(props.task, 'needTodo'))
                     }
                 }} alt=""/>
-                <p className={styles.task__text} style={(props.task.status === 'complete')
+                <p
+                   onClick={(e) => {
+                       if(activeMenuTask) {
+                           dispatch(setCurrTask(props.task.id))
+                       }
+                       else {
+                           dispatch(setMenuTaskActive(!activeMenuTask))
+                           dispatch(setCurrTask(props.task.id))
+                       }
+
+
+                   }}
+                   className={styles.task__text} style={(props.task.status === 'complete')
                     ? {textDecoration:'line-through'}
                     : {textDecoration:'none'}}>{props.task.text}</p>
                 {
@@ -46,7 +59,10 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     :
                     null
                 }
-                <img onClick={() => dispatch(setDeleteTask(props.task))}
+                <img onClick={() => {
+                    dispatch(setDeleteTask(props.task))
+                    dispatch(setMenuTaskActive(!activeMenuTask))
+                }}
                      className={styles.task__bucket} src={bucket} alt="icon"/>
             </div>
             {

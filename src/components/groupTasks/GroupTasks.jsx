@@ -9,6 +9,7 @@ function GroupTasks(props) {
     const dispatch = useDispatch();
     const dragStartHandler = (e, task) => {
         setCurrTask(task)
+
     }
 
     const dragEndHandler = (e) => {
@@ -26,6 +27,7 @@ function GroupTasks(props) {
         e.currentTarget.style.background = '#9D8E8E'
         e.currentTarget.style.transform = 'translateY(0)'
         dispatch(setChangePlaceTask(currTask, task))
+
 
     }
     return (

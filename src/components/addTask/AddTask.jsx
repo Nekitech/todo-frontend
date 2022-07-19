@@ -16,7 +16,6 @@ function AddTask({addT}) {
             text: textArea,
             status: 'needTodo'
         }
-        console.log(newTask)
         dispatch(setAddTask(newTask))
         setTextArea('')
 

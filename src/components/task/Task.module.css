@@ -5,7 +5,7 @@
     border-radius: 10px;
     margin: 20px 0;
     position: relative;
-    cursor: grab;
+    cursor: pointer;
     transition: 0.3s all;
     z-index: 3;
 

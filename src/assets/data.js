@@ -1,6 +1,7 @@
 import uniqid from 'uniqid';
 const data = {
     currGroupId: '',
+    currTaskId: '',
     data: [
         {
             idGroup: uniqid(),
@@ -9,7 +10,9 @@ const data = {
                 {
                     id: uniqid(),
                     text: "Завтра сходить в магазин, купить хлеба",
-                    status: "needTodo"
+                    status: "needTodo",
+                    description: "",
+                    date: ""
                 }
             ]
         },
@@ -20,7 +23,9 @@ const data = {
                 {
                     id: uniqid(),
                     text: "Завтра сходить в магазин, купить молока",
-                    status: "needTodo"
+                    status: "needTodo",
+                    description: "",
+                    date: ""
                 }
             ]
         }

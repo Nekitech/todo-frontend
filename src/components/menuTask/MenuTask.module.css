@@ -1,0 +1,35 @@
+.menuTask {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100vh;
+    transition: 0.3s all;
+    background-color: transparent;
+    opacity: 0;
+}
+.activeMenu {
+    min-width: 410px;
+    height: 100%;
+    background-color: #A47878;
+    opacity: 100%;
+    transition: 0.3s all;
+}
+.menuTask__container {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    padding: 100px 30px 100px 30px;
+}
+.activeMenu .menuTask {
+    opacity: 100%;
+}
+.menuTask__editText {
+
+}
+.menuTask__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}

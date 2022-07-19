@@ -1,12 +1,13 @@
 .addTask {
-    width: 100%;
+    max-width: 100%;
     min-height: 100px;
     background-color: #9D8E8E;
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 .addTask__container {
     display: flex;

@@ -6,7 +6,8 @@ import {
     ADD_TASK,
     DELETE_TASK,
     CHANGE_PLACE_TASK,
-    CHANGE_STATUS_TASK
+    CHANGE_STATUS_TASK,
+    SET_CURR_TASK, SET_MENU_TASK_ACTIVE
 } from "./types";
 
 export function setCurrGroup(idGroup) {
@@ -65,3 +66,16 @@ export function setChangePlaceTask(currTask, task) {
     }
 }
 
+export function setCurrTask(idTask) {
+    return {
+        type: SET_CURR_TASK,
+        payload: {idTask}
+    }
+}
+
+export function setMenuTaskActive(activeMenuTask) {
+    return {
+        type: SET_MENU_TASK_ACTIVE,
+        payload: {activeMenuTask}
+    }
+}
