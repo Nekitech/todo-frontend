@@ -13,7 +13,7 @@ function MenuTask(props) {
             ? styles.menuTask + ' ' + styles.activeMenu
             : styles.menuTask}>
             <div className={styles.menuTask__container}>
-                <textarea className={styles.menuTask__editText}></textarea>
+                <textarea placeholder={'Добавить описание'} className={styles.menuTask__editText}></textarea>
             </div>
             <img onClick={() => {
                 dispatch(setMenuTaskActive(!activeMenuTask))
