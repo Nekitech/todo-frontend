@@ -62,7 +62,7 @@
 }
 .menuTask__inputWrapper {
     max-height: 136px;
-    padding: 24px 30px;
+    padding: 20px 30px;
     background-color: #9D8E8E;
     position: relative;
     border-radius: 10px;
@@ -75,6 +75,7 @@
     border: none;
     resize: none;
     overflow-y: scroll;
+    width: 100%;
 }
 .menuTask__input::-webkit-scrollbar {
     width: 0;
@@ -85,7 +86,8 @@
 }
 .menuTask__pencilIcon {
     position: absolute;
-    bottom: 16px;
-    right: 16px;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
+    transform: scale(0.7);
 }

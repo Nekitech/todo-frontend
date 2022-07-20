@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styles from './MenuTask.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import close from '../../img/close_menuTask.svg';
-import {setChangeTextTask, setMenuTaskActive} from "../../redux/actions";
+import {setChangeDescrTask, setChangeTextTask, setMenuTaskActive} from "../../redux/actions";
 import InputTask from "../../UI/inputTask/InputTask";
 import pencil from '../../img/pencil.svg';
 
@@ -14,20 +14,26 @@ function MenuTask(props) {
     const currTaskId = useSelector(state => state.groupsReducer.currTaskId);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
     const groups = useSelector(state => state.groupsReducer.data);
-    const currTask = groups.filter(g => (g.idGroup === currGroupId))[0].tasks.filter(t => t.id === currTaskId)[0] || {};
+    const currTask = groups.filter(g => (g.idGroup === currGroupId))[0]?.tasks.filter(t => t.id === currTaskId)[0] || {};
 
     const [textArea, setTextArea] = useState('');
+    const [descr, setDescr] = useState('');
 
     useEffect(() => {
         setTextArea(currTask.text);
-    }, [currTask.text]);
+        setDescr(currTask.description);
+    }, [currTask.text, currTask.description]);
 
 
     const handleEditTask = () => {
         dispatch(setChangeTextTask(textArea, currTaskId, currGroupId))
         setTextArea(textArea)
-        console.log(textArea)
 
+    }
+
+    const handleEditDescr = () => {
+        dispatch(setChangeDescrTask(descr, currTaskId, currGroupId))
+        setDescr(descr)
     }
     return (
         <div className={(activeMenuTask)
@@ -61,7 +67,22 @@ function MenuTask(props) {
 
                          src={pencil} className={styles.menuTask__pencilIcon} alt={''}/>
                 </div>
-                <textarea placeholder={'Добавить описание'} className={styles.menuTask__editText}></textarea>
+                <textarea
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter' && descr.match(/\S/g) !== null && descr.length > 0) {
+                            handleEditDescr()
+                            event.preventDefault()
+                        }
+                        else if(event.key === 'Enter' && descr.length === 0) {
+                            event.preventDefault()
+                        }
+                    }}
+                    onChange={(e) => {
+                        setDescr(e.target.value)
+                    }}
+                    value={descr}
+                    placeholder={'Добавить описание'}
+                    className={styles.menuTask__editText}></textarea>
             </div>
             <img onClick={() => {
                 dispatch(setMenuTaskActive(!activeMenuTask))

@@ -9,9 +9,8 @@ import {setChangeStatusTask, setCurrTask, setDeleteTask, setMenuTaskActive} from
 
 function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
-    const currTaskId = useSelector(state => state.groupsReducer);
-    console.log(currTaskId);
     const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
+
     return (
         <div
             draggable={draggable}
@@ -40,7 +39,6 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                            dispatch(setMenuTaskActive(!activeMenuTask))
                            dispatch(setCurrTask(props.task.id))
                        }
-                       console.log(currTaskId)
                    }}
                    className={styles.task__text} style={(props.task.status === 'complete')
                     ? {textDecoration:'line-through'}

@@ -15,7 +15,9 @@ function AddTask({addT}) {
         const newTask = {
             id: uniqid(),
             text: textArea,
-            status: 'needTodo'
+            status: 'needTodo',
+            date: new Date(),
+            description: '',
         }
         dispatch(setAddTask(newTask))
         setTextArea('')

@@ -22,7 +22,6 @@ export function groupsReducer(state = initialState, action) {
             return {currGroupId: action.payload.idGroup, data: [...state.data]}
 
         case SET_CURR_TASK:
-            console.log({...state, currTaskId: action.payload.idTask, data: [...state.data]})
             return {...state, currTaskId: action.payload.idTask, data: [...state.data]}
 
         case ADD_GROUP:
@@ -85,10 +84,9 @@ export function groupsReducer(state = initialState, action) {
         case CHANGE_DESCR_TASK:
             return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
                     ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
-                            ? {...t, descr: action.payload.newDescr} : t)}
+                            ? {...t, description: action.payload.newDescr} : t)}
                     : g)}
         case CHANGE_TEXT_TASK:
-            console.log(action.payload)
             return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
                     ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
                             ? {...t, text: action.payload.newText} : t)}
