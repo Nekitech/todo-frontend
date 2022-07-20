@@ -6,6 +6,7 @@ import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
 import {setAddTask} from "../../redux/actions";
 import InputTask from "../../UI/inputTask/InputTask";
+import {getDateTask} from "../../assets/data";
 
 
 function AddTask({addT}) {
@@ -16,7 +17,7 @@ function AddTask({addT}) {
             id: uniqid(),
             text: textArea,
             status: 'needTodo',
-            date: new Date(),
+            date: getDateTask(),
             description: '',
         }
         dispatch(setAddTask(newTask))

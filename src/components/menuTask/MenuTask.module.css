@@ -7,6 +7,7 @@
     transition: 0.3s all;
     background-color: transparent;
     opacity: 0;
+    justify-content: space-between;
 }
 .activeMenu {
     width: 410px;
@@ -35,12 +36,11 @@
 .menuTask__editText {
     width: 100%;
     height: 300px;
-    margin-top: 52px;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 28px;
-
+    outline: none;
     color: #FFFFFF;
     background: #757171;
     border-radius: 10px;
@@ -90,4 +90,25 @@
     right: 5px;
     cursor: pointer;
     transform: scale(0.7);
+}
+
+.menuTask__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    margin-top: 30px;
+}
+.menuTask__footerDate {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+}
+.menuTask__taskNote {
+    margin: 52px 0 20px 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
 }

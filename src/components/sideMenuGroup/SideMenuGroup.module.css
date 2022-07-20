@@ -36,6 +36,7 @@
     flex-direction: column;
     opacity: 0;
     padding: 100px 30px 100px 30px;
+    height: 100%;
 }
 .activeMenu .sideMenu__container {
     opacity: 100%;

@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import styles from './MenuTask.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import close from '../../img/close_menuTask.svg';
-import {setChangeDescrTask, setChangeTextTask, setMenuTaskActive} from "../../redux/actions";
+import {setChangeDescrTask, setChangeTextTask, setDeleteTask, setMenuTaskActive} from "../../redux/actions";
 import InputTask from "../../UI/inputTask/InputTask";
 import pencil from '../../img/pencil.svg';
-
+import deleteIcon from '../../img/bucket.svg';
 
 function MenuTask(props) {
     const dispatch = useDispatch();
@@ -39,6 +39,9 @@ function MenuTask(props) {
         <div className={(activeMenuTask)
             ? styles.menuTask + ' ' + styles.activeMenu
             : styles.menuTask}>
+            <img onClick={() => {
+                dispatch(setMenuTaskActive(!activeMenuTask))
+            }} src={close} className={styles.menuTask__close} alt={''}/>
             <div className={styles.menuTask__container}>
                 <div className={styles.menuTask__inputWrapper}>
                     <InputTask
@@ -59,14 +62,14 @@ function MenuTask(props) {
                         className={styles.menuTask__input}/>
 
                     <img onClick={(event) => {
-
                         if (textArea.match(/\S/g) !== null) {
                             handleEditTask()
                         }
-                        }}
+                    }}
 
-                         src={pencil} className={styles.menuTask__pencilIcon} alt={''}/>
+                     src={pencil} className={styles.menuTask__pencilIcon} alt={''}/>
                 </div>
+                <p className={styles.menuTask__taskNote}>Заметка о задаче</p>
                 <textarea
                     onKeyDown={(event) => {
                         if (event.key === 'Enter' && descr.match(/\S/g) !== null && descr.length > 0) {
@@ -81,12 +84,19 @@ function MenuTask(props) {
                         setDescr(e.target.value)
                     }}
                     value={descr}
-                    placeholder={'Добавить описание'}
+                    placeholder={'Добавить заметку'}
                     className={styles.menuTask__editText}></textarea>
             </div>
-            <img onClick={() => {
-                dispatch(setMenuTaskActive(!activeMenuTask))
-            }} src={close} className={styles.menuTask__close} alt={''}/>
+            <div className={styles.menuTask__footer}>
+                <p className={styles.menuTask__footerDate}>Создано {currTask.date}</p>
+                <img onClick={() => {
+                    if(activeMenuTask) {
+                        dispatch(setMenuTaskActive(!activeMenuTask))
+                    }
+                    dispatch(setDeleteTask(currTask))
+
+                }} src={deleteIcon} className={styles.menuTask__footerDeleteIcon} alt={''}/>
+            </div>
         </div>
     );
 }
