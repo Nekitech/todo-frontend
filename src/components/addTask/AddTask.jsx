@@ -5,6 +5,7 @@ import alarm from '../../img/alarm.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
 import {setAddTask} from "../../redux/actions";
+import InputTask from "../../UI/inputTask/InputTask";
 
 
 function AddTask({addT}) {
@@ -30,20 +31,15 @@ function AddTask({addT}) {
                     }
                 }
                 } className={styles.addTask__cross} src={cross} alt="icon"/>
-                <textarea
-                    onChange={(e) => {
-                        setTextArea(e.target.value)
-                    }}
-                    onKeyDown={(event) => {
-                        if(event.key === 'Enter' && textArea.match(/\S/g) !== null) {
-                            handleAddNewTask()
-                        }
-                    }
-                    }
-                    value={textArea}
-                    className={styles.addTask__areaText}
-                    placeholder={'Новая задача'}>
-                </textarea>
+                <InputTask onChange={(e) => {
+                               setTextArea(e.target.value)}}
+                           onKeyDown={(event) => {
+                               if (event.key === 'Enter' && textArea.match(/\S/g) !== null) {
+                                   handleAddNewTask()
+                               }
+                           }
+                           }
+                           value={textArea}/>
                 <img className={styles.addTask__alarm} src={alarm} alt="icon"/>
             </div>
         </div>

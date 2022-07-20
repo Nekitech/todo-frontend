@@ -16,26 +16,7 @@
     padding: 10px 25px;
 
 }
-.addTask__areaText {
-    font-family: Roboto, serif;
-    max-width: 80%;
-    font-size: 24px;
-    margin: 0 10px;
-    outline: none;
-    flex: 80%;
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    resize: none;
-    overflow-y: scroll;
-}
-.addTask__areaText::-webkit-scrollbar {
-    width: 0;
-}
 
-.addTask__areaText::-webkit-input-placeholder {
-    color: #fff;
-}
 .addTask__cross {
     flex: 10%;
     width: 50px;

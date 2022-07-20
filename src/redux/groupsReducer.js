@@ -7,10 +7,11 @@ import {
     ADD_TASK,
     DELETE_TASK,
     CHANGE_STATUS_TASK,
-    CHANGE_PLACE_TASK, SET_CURR_TASK
+    CHANGE_PLACE_TASK, SET_CURR_TASK, CHANGE_DESCR_TASK, CHANGE_TEXT_TASK
 } from "./types";
 
 const initialState = {
+    currTaskId: '',
     currGroupId: data.data[0].idGroup,
     data: data.data
 }
@@ -19,6 +20,10 @@ export function groupsReducer(state = initialState, action) {
     switch (action.type) {
         case SET_CURR_GROUP:
             return {currGroupId: action.payload.idGroup, data: [...state.data]}
+
+        case SET_CURR_TASK:
+            console.log({...state, currTaskId: action.payload.idTask, data: [...state.data]})
+            return {...state, currTaskId: action.payload.idTask, data: [...state.data]}
 
         case ADD_GROUP:
             if(state.data.length === 0) {
@@ -52,10 +57,6 @@ export function groupsReducer(state = initialState, action) {
                     ? action.payload.group
                     : g)}
 
-        case SET_CURR_TASK:
-            console.log({...state, currTaskId: action.payload.idTask, data: [...state.data]})
-            return {...state, currTaskId: action.payload.idGroup, data: [...state.data]}
-
         case ADD_TASK:
             return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
                 ? {...g, tasks: [...g.tasks, action.payload.newTask]}
@@ -81,6 +82,17 @@ export function groupsReducer(state = initialState, action) {
                         : (t.id === action.payload.currTask.id)
                             ? action.payload.task : t)}
                 : g)}
+        case CHANGE_DESCR_TASK:
+            return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
+                    ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
+                            ? {...t, descr: action.payload.newDescr} : t)}
+                    : g)}
+        case CHANGE_TEXT_TASK:
+            console.log(action.payload)
+            return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
+                    ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
+                            ? {...t, text: action.payload.newText} : t)}
+                    : g)}
         default:
             return state
 

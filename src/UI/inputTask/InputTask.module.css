@@ -1,0 +1,20 @@
+.areaText {
+    font-family: Roboto, serif;
+    max-width: 80%;
+    font-size: 24px;
+    margin: 0 10px;
+    outline: none;
+    flex: 80%;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    resize: none;
+    overflow-y: scroll;
+}
+.areaText::-webkit-scrollbar {
+    width: 0;
+}
+
+.areaText::-webkit-input-placeholder {
+    color: #fff;
+}

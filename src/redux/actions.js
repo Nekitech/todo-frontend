@@ -7,7 +7,9 @@ import {
     DELETE_TASK,
     CHANGE_PLACE_TASK,
     CHANGE_STATUS_TASK,
-    SET_CURR_TASK, SET_MENU_TASK_ACTIVE
+    SET_CURR_TASK,
+    SET_MENU_TASK_ACTIVE,
+    CHANGE_DESCR_TASK, CHANGE_TEXT_TASK
 } from "./types";
 
 export function setCurrGroup(idGroup) {
@@ -77,5 +79,19 @@ export function setMenuTaskActive(activeMenuTask) {
     return {
         type: SET_MENU_TASK_ACTIVE,
         payload: {activeMenuTask}
+    }
+}
+
+export function setChangeDescrTask(newDescr, taskId, groupId) {
+    return {
+        type: CHANGE_DESCR_TASK,
+        payload: {newDescr, taskId, groupId}
+    }
+}
+
+export function setChangeTextTask(newText, taskId, groupId) {
+    return {
+        type: CHANGE_TEXT_TASK,
+        payload: {newText, taskId, groupId}
     }
 }

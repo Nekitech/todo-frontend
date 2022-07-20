@@ -9,6 +9,8 @@ import {setChangeStatusTask, setCurrTask, setDeleteTask, setMenuTaskActive} from
 
 function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
+    const currTaskId = useSelector(state => state.groupsReducer);
+    console.log(currTaskId);
     const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
     return (
         <div
@@ -32,17 +34,18 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                    onClick={(e) => {
                        if(activeMenuTask) {
                            dispatch(setCurrTask(props.task.id))
+
                        }
                        else {
                            dispatch(setMenuTaskActive(!activeMenuTask))
                            dispatch(setCurrTask(props.task.id))
                        }
-
-
+                       console.log(currTaskId)
                    }}
                    className={styles.task__text} style={(props.task.status === 'complete')
                     ? {textDecoration:'line-through'}
-                    : {textDecoration:'none'}}>{props.task.text}</p>
+                    : {textDecoration:'none'}}>
+                    {props.task.text}</p>
                 {
                     (props.task.status === 'needTodo')
                     ?
@@ -60,8 +63,11 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     null
                 }
                 <img onClick={() => {
+                    if(activeMenuTask) {
+                        dispatch(setMenuTaskActive(!activeMenuTask))
+                    }
                     dispatch(setDeleteTask(props.task))
-                    dispatch(setMenuTaskActive(!activeMenuTask))
+
                 }}
                      className={styles.task__bucket} src={bucket} alt="icon"/>
             </div>

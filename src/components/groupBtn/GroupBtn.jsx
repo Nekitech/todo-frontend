@@ -40,6 +40,9 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
                 ? styles.groupName + " " + styles.activeBtn
                 : styles.groupName}>{props.name}</p>
             <img onClick={() => {
+                if(activeMenuTask) {
+                    dispatch(setMenuTaskActive(!activeMenuTask))
+                }
                 dispatch(setDeleteGroup(props.idGroup))
             }} className={styles.iconGroupDelete} src={bucket} alt=""/>
         </div>
