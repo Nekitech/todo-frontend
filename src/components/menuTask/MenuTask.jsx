@@ -89,6 +89,7 @@ function MenuTask(props) {
             </div>
             <div className={styles.menuTask__footer}>
                 <p className={styles.menuTask__footerDate}>Создано {currTask.date}</p>
+
                 <img onClick={() => {
                     if(activeMenuTask) {
                         dispatch(setMenuTaskActive(!activeMenuTask))

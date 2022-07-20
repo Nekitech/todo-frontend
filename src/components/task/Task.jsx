@@ -10,7 +10,7 @@ import {setChangeStatusTask, setCurrTask, setDeleteTask, setMenuTaskActive} from
 function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
     const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
-
+    const currTaskId = useSelector(state => state.groupsReducer.currTaskId);
     return (
         <div
             draggable={draggable}
@@ -61,7 +61,7 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     null
                 }
                 <img onClick={() => {
-                    if(activeMenuTask) {
+                    if(activeMenuTask && props.task.id === currTaskId) {
                         dispatch(setMenuTaskActive(!activeMenuTask))
                     }
                     dispatch(setDeleteTask(props.task))

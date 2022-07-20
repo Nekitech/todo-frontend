@@ -62,7 +62,6 @@ export function groupsReducer(state = initialState, action) {
                 : g)}
 
         case DELETE_TASK:
-
             return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
                 ? {...g, tasks: [...g.tasks.splice(0, g.tasks.indexOf(action.payload.task)),
                         ...g.tasks.splice(g.tasks.indexOf(action.payload.task) + 1)]}
