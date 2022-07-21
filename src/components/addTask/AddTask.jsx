@@ -37,11 +37,17 @@ function AddTask({addT}) {
                 <InputTask onChange={(e) => {
                                setTextArea(e.target.value)}}
                            onKeyDown={(event) => {
-                               if (event.key === 'Enter' && textArea.match(/\S/g) !== null) {
+                               if (event.key === 'Enter'
+                                   && textArea.match(/\S/g) !== null) {
                                    handleAddNewTask()
+                                   event.preventDefault()
                                }
-                           }
-                           }
+
+                               else if(event.key === 'Enter' && textArea.length === 0) {
+                                   event.preventDefault()
+                               }
+
+                           }}
                            value={textArea}/>
                 <img className={styles.addTask__alarm} src={alarm} alt="icon"/>
             </div>

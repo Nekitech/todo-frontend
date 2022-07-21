@@ -1,16 +1,11 @@
 import React from 'react';
 import styles from './App.module.css';
-import Group from "./groups/group/Group";
-import SideMenuGroup from "./components/sideMenuGroup/SideMenuGroup";
-import MenuTask from "./components/menuTask/MenuTask";
+
+import MainPage from "./pages/mainPage/MainPage";
 
 function App() {
     return (
-        <div className={styles.app}>
-            <SideMenuGroup/>
-            <Group/>
-            <MenuTask/>
-        </div>
+        <MainPage/>
     );
 }
 
