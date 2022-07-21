@@ -22,7 +22,7 @@ function MenuTask(props) {
     useEffect(() => {
         setTextArea(currTask.text);
         setDescr(currTask.description);
-    }, [currTask.text, currTask.description]);
+    }, [currTaskId]);
 
 
     const handleEditTask = () => {
@@ -33,7 +33,7 @@ function MenuTask(props) {
 
     const handleEditDescr = () => {
         dispatch(setChangeDescrTask(descr, currTaskId, currGroupId))
-        setDescr(descr)
+        // setDescr(descr)
     }
     return (
         <div className={(activeMenuTask)
@@ -82,6 +82,7 @@ function MenuTask(props) {
                     }}
                     onChange={(e) => {
                         setDescr(e.target.value)
+                        handleEditDescr()
                     }}
                     value={descr}
                     placeholder={'Добавить заметку'}
