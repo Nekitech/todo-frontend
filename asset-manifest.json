@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/todo-react-nodejs/static/css/main.f30cc720.css",
-    "main.js": "/todo-react-nodejs/static/js/main.aaee7fad.js",
+    "main.css": "/todo-react-nodejs/static/css/main.aba7fb48.css",
+    "main.js": "/todo-react-nodejs/static/js/main.bd003b44.js",
     "static/media/alarm.svg": "/todo-react-nodejs/static/media/alarm.0224c18626698c9e37e0b74ec229ac46.svg",
     "static/media/failImg.svg": "/todo-react-nodejs/static/media/failImg.1309852740b1a37dd2936e3ff1138274.svg",
     "static/media/pencil.svg": "/todo-react-nodejs/static/media/pencil.0d76ae410ca2e0eb46177bda0a28d3be.svg",
@@ -13,11 +13,11 @@
     "static/media/SideMenuIcon.svg": "/todo-react-nodejs/static/media/SideMenuIcon.231706dbf8affa93490f4e98dee2ae1b.svg",
     "static/media/radioBtnActive.svg": "/todo-react-nodejs/static/media/radioBtnActive.7dfab48175c36c250879a565dbf4569e.svg",
     "static/media/radioBtnUnactive.svg": "/todo-react-nodejs/static/media/radioBtnUnactive.7f6dd60b96ba2856add0c4039fd6580e.svg",
-    "main.f30cc720.css.map": "/todo-react-nodejs/static/css/main.f30cc720.css.map",
-    "main.aaee7fad.js.map": "/todo-react-nodejs/static/js/main.aaee7fad.js.map"
+    "main.aba7fb48.css.map": "/todo-react-nodejs/static/css/main.aba7fb48.css.map",
+    "main.bd003b44.js.map": "/todo-react-nodejs/static/js/main.bd003b44.js.map"
   },
   "entrypoints": [
-    "static/css/main.f30cc720.css",
-    "static/js/main.aaee7fad.js"
+    "static/css/main.aba7fb48.css",
+    "static/js/main.bd003b44.js"
   ]
 }
