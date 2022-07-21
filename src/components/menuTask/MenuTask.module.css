@@ -45,6 +45,7 @@
     background: #757171;
     border-radius: 10px;
     padding: 16px 22px;
+    resize: none;
 }
 .menuTask__editText::-webkit-input-placeholder {
     font-style: normal;
@@ -53,6 +54,9 @@
     line-height: 28px;
 
     color: #FFFFFF;
+}
+.menuTask__editText::-webkit-scrollbar {
+    width: 0;
 }
 .menuTask__close {
     position: absolute;
