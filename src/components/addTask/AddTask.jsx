@@ -5,7 +5,7 @@ import alarm from '../../img/alarm.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
 import {setAddTask} from "../../redux/actions";
-import InputTask from "../../UI/inputTask/InputTask";
+import InputTask from "../UI/inputTask/InputTask";
 import {getDateTask} from "../../assets/data";
 
 

@@ -32,6 +32,9 @@
 .activeMenu .menuTask__container {
     opacity: 100%;
 }
+.activeMenu .menuTask__close {
+    display: block;
+}
 
 .menuTask__editText {
     width: 100%;
@@ -63,6 +66,7 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
+    display: none;
 }
 .menuTask__inputWrapper {
     max-height: 136px;

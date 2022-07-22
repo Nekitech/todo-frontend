@@ -3,7 +3,7 @@ import styles from './MenuTask.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import close from '../../img/close_menuTask.svg';
 import {setChangeDescrTask, setChangeTextTask, setDeleteTask, setMenuTaskActive} from "../../redux/actions";
-import InputTask from "../../UI/inputTask/InputTask";
+import InputTask from "../UI/inputTask/InputTask";
 import pencil from '../../img/pencil.svg';
 import deleteIcon from '../../img/bucket.svg';
 
