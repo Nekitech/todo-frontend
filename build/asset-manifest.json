@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/todo-react-nodejs/static/css/main.0bf2f8de.css",
+    "main.js": "/todo-react-nodejs/static/js/main.965da547.js",
+    "static/media/alarm.svg": "/todo-react-nodejs/static/media/alarm.0224c18626698c9e37e0b74ec229ac46.svg",
+    "static/media/failImg.svg": "/todo-react-nodejs/static/media/failImg.1309852740b1a37dd2936e3ff1138274.svg",
+    "static/media/pencil.svg": "/todo-react-nodejs/static/media/pencil.0d76ae410ca2e0eb46177bda0a28d3be.svg",
+    "static/media/bucket.svg": "/todo-react-nodejs/static/media/bucket.8e6d50ae30c3e99dad26d09fd06c57a9.svg",
+    "index.html": "/todo-react-nodejs/index.html",
+    "static/media/iconGroup.svg": "/todo-react-nodejs/static/media/iconGroup.727b50ac1b106c1c9fad642c8d884a5b.svg",
+    "static/media/close_menuTask.svg": "/todo-react-nodejs/static/media/close_menuTask.068460c26756206b92d4182abe8a9e5f.svg",
+    "static/media/cross.svg": "/todo-react-nodejs/static/media/cross.a4360b550cb31d369de23d674e1d1ec6.svg",
+    "static/media/SideMenuIcon.svg": "/todo-react-nodejs/static/media/SideMenuIcon.231706dbf8affa93490f4e98dee2ae1b.svg",
+    "static/media/radioBtnActive.svg": "/todo-react-nodejs/static/media/radioBtnActive.7dfab48175c36c250879a565dbf4569e.svg",
+    "static/media/radioBtnUnactive.svg": "/todo-react-nodejs/static/media/radioBtnUnactive.7f6dd60b96ba2856add0c4039fd6580e.svg",
+    "main.0bf2f8de.css.map": "/todo-react-nodejs/static/css/main.0bf2f8de.css.map",
+    "main.965da547.js.map": "/todo-react-nodejs/static/js/main.965da547.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0bf2f8de.css",
+    "static/js/main.965da547.js"
+  ]
+}
