@@ -7,9 +7,10 @@ import AuthAndRegPage from "./pages/authAndRegPage/AuthAndRegPage";
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<MainPage/>}/>
-            <Route path="/authAndRegPage" element={<AuthAndRegPage/>}/>
+            <Route path="/todo-react-nodejs/MainPage" element={<MainPage/>}/>
+            <Route path="/todo-react-nodejs" element={<AuthAndRegPage/>}/>
         </Routes>
+
 
     );
 }
