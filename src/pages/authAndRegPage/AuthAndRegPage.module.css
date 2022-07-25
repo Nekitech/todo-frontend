@@ -140,7 +140,7 @@
     height: 412px;
     display: none;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
 
 }
