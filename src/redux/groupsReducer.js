@@ -40,8 +40,7 @@ export function groupsReducer(state = initialState, action) {
             }
             if (action.payload.groupId === state.currGroupId) {
                 // при удалении активной группы, активной становится первая группа
-
-                return {currGroupId: state.data.filter(g => g.idGroup !== action.payload.groupId)[0].idGroup,
+                return {currGroupId: state.data.find(g => g.idGroup !== action.payload.groupId).idGroup,
                     data: state.data.filter(g => g.idGroup !== action.payload.groupId)}
 
             } else {

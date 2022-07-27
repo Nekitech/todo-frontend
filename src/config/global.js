@@ -1,0 +1,1 @@
+export const pathGlobal = 'todo-react-nodejs';

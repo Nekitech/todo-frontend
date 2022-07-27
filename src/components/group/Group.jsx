@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Group.module.css'
-import ListTask from "../../components/listTask/ListTask";
-import AddTask from "../../components/addTask/AddTask";
+import ListTask from "../listTask/ListTask";
+import AddTask from "../addTask/AddTask";
 
 import {useSelector} from "react-redux";
 

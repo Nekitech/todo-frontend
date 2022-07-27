@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://nekitech.github.io/todo-react-nodejs",
+  "homepage": "https://nekitech.github.io/todo-frontend",
   "eslintConfig": {
     "extends": [
       "react-app",

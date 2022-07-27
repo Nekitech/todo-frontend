@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import styles from './AuthAndRegPage.module.css';
 import {Link} from "react-router-dom";
+import {pathGlobal} from "../../config/global";
 
 function AuthAndRegPage(props) {
     const reg = useRef(null);
@@ -34,7 +35,7 @@ function AuthAndRegPage(props) {
                             <h1 style={{color: '#2C2B2B'}} className={styles.regAndAuth_titleForm}>Вход</h1>
                             <input type="text" className={styles.regAndAuth__input} placeholder="Логин"/>
                             <input type="password" className={styles.regAndAuth__input} placeholder="Пароль"/>
-                            <Link to="/todo-react-nodejs/MainPage">
+                            <Link to={`/${pathGlobal}s/MainPage`}>
                                 <button className={styles.regAndAuth__btnOpen}>Войти</button>
                             </Link>
                         </form>
@@ -45,7 +46,7 @@ function AuthAndRegPage(props) {
                             <input type="email" className={styles.regAndAuth__input} placeholder="Email"/>
                             <input type="password" className={styles.regAndAuth__input} placeholder="Пароль"/>
                             <input type="password" className={styles.regAndAuth__input} placeholder="Подтвердите пароль"/>
-                            <Link to="/todo-react-nodejs/MainPage">
+                            <Link to={`/${pathGlobal}/MainPage`}>
                                 <button className={styles.regAndAuth__btnReg}>Зарегестрироваться</button>
                             </Link>
                         </form>

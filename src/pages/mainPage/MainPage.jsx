@@ -1,6 +1,6 @@
 import React from 'react';
 import SideMenuGroup from "../../components/sideMenuGroup/SideMenuGroup";
-import Group from "../../groups/group/Group";
+import Group from "../../components/group/Group";
 import MenuTask from "../../components/menuTask/MenuTask";
 import styles from "./MainPage.module.css";
 import {Link} from "react-router-dom";
