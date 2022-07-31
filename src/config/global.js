@@ -1,1 +1,1 @@
-export const pathGlobal = 'todo-react-nodejs';
+export const pathGlobal = 'todo-frontend';

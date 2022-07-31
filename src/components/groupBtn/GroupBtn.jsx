@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styles from "./GroupBtn.module.css";
-import groupIcon from "../../img/iconGroup.svg";
 import bucket from '../../img/bucket.svg'
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrGroup, setDeleteGroup, setMenuTaskActive} from "../../redux/actions";
+import pencil from '../../img/pencil.svg'
 
 function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
     const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
+    const nameGroup = useRef(null)
+
+    const handleClickOutside = e => {
+        if(nameGroup?.current === e.target){
+            return null
+        }
+        nameGroup.current?.removeAttribute('contenteditable')
+    }
+    document.addEventListener('click', handleClickOutside);
 
     const checkActiveBtn = (e) => {
         const groupText = document.querySelectorAll(`.${styles.groupName}`)
@@ -27,20 +36,24 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
             onDragOver={onDragOver}
             onDrop={onDrop}
             className={styles.groupBtn}>
-            <img className={styles.iconGroup} src={groupIcon} alt=""/>
-            <p onClick={(e) => {
-                if(activeMenuTask && props.idGroup !== currGroupId) {
+            <img onClick={(e) => {
+                nameGroup.current.setAttribute('contentEditable', true)
+                nameGroup.current.focus()
+                e.stopPropagation()
+            }}
+                 className={styles.iconGroupEdit} src={pencil} alt=""/>
+            <p ref={nameGroup} onClick={(e) => {
+                if (activeMenuTask && props.idGroup !== currGroupId) {
                     dispatch(setMenuTaskActive(!activeMenuTask))
                 }
                 dispatch(setCurrGroup(props.idGroup))
                 checkActiveBtn(e)
-
             }}
                className={(props.idGroup === currGroupId)
-                ? styles.groupName + " " + styles.activeBtn
-                : styles.groupName}>{props.name}</p>
+                   ? styles.groupName + " " + styles.activeBtn
+                   : styles.groupName}>{props.name}</p>
             <img onClick={() => {
-                if(activeMenuTask && props.idGroup === currGroupId) {
+                if (activeMenuTask && props.idGroup === currGroupId) {
                     dispatch(setMenuTaskActive(!activeMenuTask))
                 }
                 dispatch(setDeleteGroup(props.idGroup))

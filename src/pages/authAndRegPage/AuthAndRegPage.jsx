@@ -33,9 +33,9 @@ function AuthAndRegPage(props) {
 
                         <form action={'#'} className={styles.regAndAuth__formAuth}>
                             <h1 style={{color: '#2C2B2B'}} className={styles.regAndAuth_titleForm}>Вход</h1>
-                            <input type="text" className={styles.regAndAuth__input} placeholder="Логин"/>
+                            <input type="email" className={styles.regAndAuth__input} placeholder="Email"/>
                             <input type="password" className={styles.regAndAuth__input} placeholder="Пароль"/>
-                            <Link to={`/${pathGlobal}s/MainPage`}>
+                            <Link to={`/${pathGlobal}/MainPage`}>
                                 <button className={styles.regAndAuth__btnOpen}>Войти</button>
                             </Link>
                         </form>

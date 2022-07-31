@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import styles from './SideMenuGroup.module.css'
 import sideMenuIcon from '../../img/SideMenuIcon.svg'
-import ListGroupBtn from "../listGroup/ListGroupBtn";
+import ListGroupBtn from "../listGroupBtn/ListGroupBtn";
 import AddGroup from "../addGroup/AddGroup";
 
 function SideMenuGroup(props) {

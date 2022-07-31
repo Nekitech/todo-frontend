@@ -4,11 +4,12 @@
     cursor: pointer;
     margin-bottom: 30px;
 }
-.iconGroup {
-    width: 20px;
+.iconGroupEdit {
+    width: 25px;
     height: 43px;
-    align-self: end;
-    cursor: grab;
+    align-self: center;
+    cursor: pointer;
+    margin-right: 20px;
 }
 .iconGroupDelete {
     width: 50px;
@@ -27,7 +28,7 @@
     margin-left: 9px;
     font-size: 24px;
     border-bottom: 0 solid #D9D9D9;
-
+    outline: none;
 
 }
 .activeBtn {

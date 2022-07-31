@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/todo-frontend/static/css/main.99e69ee3.css",
-    "main.js": "/todo-frontend/static/js/main.8435f2d3.js",
+    "main.js": "/todo-frontend/static/js/main.82db3925.js",
     "static/media/alarm.svg": "/todo-frontend/static/media/alarm.0224c18626698c9e37e0b74ec229ac46.svg",
     "static/media/failImg.svg": "/todo-frontend/static/media/failImg.1309852740b1a37dd2936e3ff1138274.svg",
     "static/media/pencil.svg": "/todo-frontend/static/media/pencil.0d76ae410ca2e0eb46177bda0a28d3be.svg",
@@ -14,10 +14,10 @@
     "static/media/radioBtnActive.svg": "/todo-frontend/static/media/radioBtnActive.7dfab48175c36c250879a565dbf4569e.svg",
     "static/media/radioBtnUnactive.svg": "/todo-frontend/static/media/radioBtnUnactive.7f6dd60b96ba2856add0c4039fd6580e.svg",
     "main.99e69ee3.css.map": "/todo-frontend/static/css/main.99e69ee3.css.map",
-    "main.8435f2d3.js.map": "/todo-frontend/static/js/main.8435f2d3.js.map"
+    "main.82db3925.js.map": "/todo-frontend/static/js/main.82db3925.js.map"
   },
   "entrypoints": [
     "static/css/main.99e69ee3.css",
-    "static/js/main.8435f2d3.js"
+    "static/js/main.82db3925.js"
   ]
 }

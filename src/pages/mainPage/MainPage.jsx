@@ -4,6 +4,7 @@ import Group from "../../components/group/Group";
 import MenuTask from "../../components/menuTask/MenuTask";
 import styles from "./MainPage.module.css";
 import {Link} from "react-router-dom";
+import {pathGlobal} from "../../config/global";
 
 function MainPage(props) {
     return (
@@ -11,7 +12,7 @@ function MainPage(props) {
             <SideMenuGroup/>
             <Group/>
             <MenuTask/>
-            <Link to="/todo-react-nodejs"> Регистрация и авторизация </Link>
+            <Link to={`/${pathGlobal}`}> Регистрация и авторизация </Link>
         </div>
 
 
