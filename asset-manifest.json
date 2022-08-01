@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/todo-frontend/static/css/main.0b346211.css",
-    "main.js": "/todo-frontend/static/js/main.45525481.js",
+    "main.css": "/todo-frontend/static/css/main.c498f45c.css",
+    "main.js": "/todo-frontend/static/js/main.61e09c6d.js",
     "static/media/alarm.svg": "/todo-frontend/static/media/alarm.0224c18626698c9e37e0b74ec229ac46.svg",
     "static/media/failImg.svg": "/todo-frontend/static/media/failImg.1309852740b1a37dd2936e3ff1138274.svg",
     "static/media/pencil.svg": "/todo-frontend/static/media/pencil.0d76ae410ca2e0eb46177bda0a28d3be.svg",
@@ -12,11 +12,11 @@
     "static/media/SideMenuIcon.svg": "/todo-frontend/static/media/SideMenuIcon.231706dbf8affa93490f4e98dee2ae1b.svg",
     "static/media/radioBtnActive.svg": "/todo-frontend/static/media/radioBtnActive.7dfab48175c36c250879a565dbf4569e.svg",
     "static/media/radioBtnUnactive.svg": "/todo-frontend/static/media/radioBtnUnactive.7f6dd60b96ba2856add0c4039fd6580e.svg",
-    "main.0b346211.css.map": "/todo-frontend/static/css/main.0b346211.css.map",
-    "main.45525481.js.map": "/todo-frontend/static/js/main.45525481.js.map"
+    "main.c498f45c.css.map": "/todo-frontend/static/css/main.c498f45c.css.map",
+    "main.61e09c6d.js.map": "/todo-frontend/static/js/main.61e09c6d.js.map"
   },
   "entrypoints": [
-    "static/css/main.0b346211.css",
-    "static/js/main.45525481.js"
+    "static/css/main.c498f45c.css",
+    "static/js/main.61e09c6d.js"
   ]
 }
