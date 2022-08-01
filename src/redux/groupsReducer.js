@@ -7,7 +7,7 @@ import {
     ADD_TASK,
     DELETE_TASK,
     CHANGE_STATUS_TASK,
-    CHANGE_PLACE_TASK, SET_CURR_TASK, CHANGE_DESCR_TASK, CHANGE_TEXT_TASK
+    CHANGE_PLACE_TASK, SET_CURR_TASK, CHANGE_DESCR_TASK, CHANGE_TEXT_TASK, CHANGE_NAME_GROUP
 } from "./types";
 
 const initialState = {
@@ -53,6 +53,12 @@ export function groupsReducer(state = initialState, action) {
                 ? action.payload.currGroup
                 : (g.idGroup === action.payload.currGroup.idGroup)
                     ? action.payload.group
+                    : g)}
+
+        case CHANGE_NAME_GROUP:
+            console.log('CHANGE_NAME_GROUP', action.payload.groupId, action.payload.newName)
+            return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
+                    ? {...g, nameGroup: action.payload.newName}
                     : g)}
 
         case ADD_TASK:

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './AddGroup.module.css'
-import cross from '../../img/cross.svg'
+import cross from '../../assets/img/cross.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
 import {setAddGroup} from "../../redux/actions";

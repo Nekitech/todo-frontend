@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import styles from './MenuTask.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import close from '../../img/close_menuTask.svg';
+import close from '../../assets/img/close_menuTask.svg';
 import {setChangeDescrTask, setChangeTextTask, setDeleteTask, setMenuTaskActive} from "../../redux/actions";
 import InputTask from "../UI/inputTask/InputTask";
-import pencil from '../../img/pencil.svg';
-import deleteIcon from '../../img/bucket.svg';
+import pencil from '../../assets/img/pencil.svg';
+import deleteIcon from '../../assets/img/bucket.svg';
 
 function MenuTask(props) {
     const dispatch = useDispatch();
@@ -33,7 +33,6 @@ function MenuTask(props) {
 
     const handleEditDescr = () => {
         dispatch(setChangeDescrTask(descr, currTaskId, currGroupId))
-        // setDescr(descr)
     }
     return (
         <div className={(activeMenuTask)

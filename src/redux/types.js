@@ -2,6 +2,7 @@ export const SET_CURR_GROUP = 'SET_CURR_GROUP';
 export const ADD_GROUP = 'ADD_GROUP';
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const CHANGE_PLACE_GROUP = 'CHANGE_PLACE_GROUP';
+export const CHANGE_NAME_GROUP = 'CHANGE_NAME_GROUP';
 
 export const SET_CURR_TASK = 'SET_CURR_TASK';
 export const ADD_TASK = 'ADD_TASK';

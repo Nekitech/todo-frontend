@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import styles from './SideMenuGroup.module.css'
-import sideMenuIcon from '../../img/SideMenuIcon.svg'
+import sideMenuIcon from '../../assets/img/SideMenuIcon.svg'
 import ListGroupBtn from "../listGroupBtn/ListGroupBtn";
 import AddGroup from "../addGroup/AddGroup";
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './AddTask.module.css'
-import cross from '../../img/cross.svg'
-import alarm from '../../img/alarm.svg'
+import cross from '../../assets/img/cross.svg'
+import alarm from '../../assets/img/alarm.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
 import {setAddTask} from "../../redux/actions";

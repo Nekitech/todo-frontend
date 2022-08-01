@@ -9,7 +9,7 @@ import {
     CHANGE_STATUS_TASK,
     SET_CURR_TASK,
     SET_MENU_TASK_ACTIVE,
-    CHANGE_DESCR_TASK, CHANGE_TEXT_TASK
+    CHANGE_DESCR_TASK, CHANGE_TEXT_TASK, CHANGE_NAME_GROUP
 } from "./types";
 
 export function setCurrGroup(idGroup) {
@@ -37,6 +37,13 @@ export function setChangePlaceGroup(currGroup, group) {
     return {
         type: CHANGE_PLACE_GROUP,
         payload: {currGroup, group}
+    }
+}
+
+export function setChangeNameGroup(groupId, newName) {
+    return {
+        type: CHANGE_NAME_GROUP,
+        payload: {groupId, newName}
     }
 }
 

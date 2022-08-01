@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Task.module.css'
-import failImg from '../../img/failImg.svg'
-import bucket from '../../img/bucket.svg'
-import radioActive from '../../img/radioBtnActive.svg'
-import radioUnactive from '../../img/radioBtnUnactive.svg'
+import failImg from '../../assets/img/failImg.svg'
+import bucket from '../../assets/img/bucket.svg'
+import radioActive from '../../assets/img/radioBtnActive.svg'
+import radioUnactive from '../../assets/img/radioBtnUnactive.svg'
 import {useDispatch, useSelector} from "react-redux";
 import {setChangeStatusTask, setCurrTask, setDeleteTask, setMenuTaskActive} from "../../redux/actions";
 
