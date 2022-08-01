@@ -42,7 +42,8 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
                 e.stopPropagation()
             }}
                  className={styles.iconGroupEdit} src={pencil} alt=""/>
-            <input ref={nameGroup}
+            <input type={"text"}
+                   ref={nameGroup}
                    value={props.name}
                    onClick={(e) => {
                        if (activeMenuTask && props.idGroup !== currGroupId) {
