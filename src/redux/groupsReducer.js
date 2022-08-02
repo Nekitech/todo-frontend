@@ -1,4 +1,5 @@
 import data from "../assets/data";
+import {createAsyncThunk} from "@reduxjs/toolkit";
 import {
     ADD_GROUP,
     DELETE_GROUP,
@@ -9,6 +10,32 @@ import {
     CHANGE_STATUS_TASK,
     CHANGE_PLACE_TASK, SET_CURR_TASK, CHANGE_DESCR_TASK, CHANGE_TEXT_TASK, CHANGE_NAME_GROUP
 } from "./types";
+import axios from "../queries/axios.js";
+
+export const fetchGroups = createAsyncThunk(
+    'groups/fetchGroups',
+    async (url, config) => {
+        const groups = await axios.get('/groups',
+            {
+                headers: {'Authorization': "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'}
+            });
+
+        const tasks = await axios.get('/tasks', {
+            params: {
+                groupId: `${groups.data[0]?._id}`
+            },
+
+            headers: {
+                'Authorization':
+                    "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'
+            }
+        });
+
+        console.log(groups.data, tasks.data);
+        return [groups.data, tasks.data];
+
+    })
+
 
 const initialState = {
     currTaskId: '',
@@ -25,7 +52,7 @@ export function groupsReducer(state = initialState, action) {
             return {...state, currTaskId: action.payload.idTask, data: [...state.data]}
 
         case ADD_GROUP:
-            if(state.data.length === 0) {
+            if (state.data.length === 0) {
                 return {
                     currGroupId: action.payload.newGroup.idGroup,
                     data: [...state.data, action.payload.newGroup]
@@ -40,61 +67,91 @@ export function groupsReducer(state = initialState, action) {
             }
             if (action.payload.groupId === state.currGroupId) {
                 // при удалении активной группы, активной становится первая группа
-                return {currGroupId: state.data.find(g => g.idGroup !== action.payload.groupId).idGroup,
-                    data: state.data.filter(g => g.idGroup !== action.payload.groupId)}
+                return {
+                    currGroupId: state.data.find(g => g.idGroup !== action.payload.groupId).idGroup,
+                    data: state.data.filter(g => g.idGroup !== action.payload.groupId)
+                }
 
             } else {
-                return {...state,
-                    data: state.data.filter(g => g.idGroup !== action.payload.groupId)}
+                return {
+                    ...state,
+                    data: state.data.filter(g => g.idGroup !== action.payload.groupId)
+                }
             }
 
         case CHANGE_PLACE_GROUP:
-            return {...state, data: state.data.map(g => (g.idGroup === action.payload.group.idGroup)
-                ? action.payload.currGroup
-                : (g.idGroup === action.payload.currGroup.idGroup)
-                    ? action.payload.group
-                    : g)}
+            return {
+                ...state, data: state.data.map(g => (g.idGroup === action.payload.group.idGroup)
+                    ? action.payload.currGroup
+                    : (g.idGroup === action.payload.currGroup.idGroup)
+                        ? action.payload.group
+                        : g)
+            }
 
         case CHANGE_NAME_GROUP:
             console.log('CHANGE_NAME_GROUP', action.payload.groupId, action.payload.newName)
-            return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
+            return {
+                ...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
                     ? {...g, nameGroup: action.payload.newName}
-                    : g)}
+                    : g)
+            }
 
         case ADD_TASK:
-            return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
-                ? {...g, tasks: [...g.tasks, action.payload.newTask]}
-                : g)}
+            return {
+                ...state, data: state.data.map(g => g.idGroup === state.currGroupId
+                    ? {...g, tasks: [...g.tasks, action.payload.newTask]}
+                    : g)
+            }
 
         case DELETE_TASK:
-            return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
-                ? {...g, tasks: [...g.tasks.splice(0, g.tasks.indexOf(action.payload.task)),
-                        ...g.tasks.splice(g.tasks.indexOf(action.payload.task) + 1)]}
-                : g)}
+            return {
+                ...state, data: state.data.map(g => g.idGroup === state.currGroupId
+                    ? {
+                        ...g, tasks: [...g.tasks.splice(0, g.tasks.indexOf(action.payload.task)),
+                            ...g.tasks.splice(g.tasks.indexOf(action.payload.task) + 1)]
+                    }
+                    : g)
+            }
 
         case CHANGE_STATUS_TASK:
-            return {...state, data: state.data.map(g => g.idGroup === state.currGroupId
-                ? {...g, tasks:  g.tasks.map(task => (task.id === action.payload.taskChanged.id)
-                            ? {...task, status: action.payload.status} : task)}
-                : g)}
+            return {
+                ...state, data: state.data.map(g => g.idGroup === state.currGroupId
+                    ? {
+                        ...g, tasks: g.tasks.map(task => (task.id === action.payload.taskChanged.id)
+                            ? {...task, status: action.payload.status} : task)
+                    }
+                    : g)
+            }
 
         case CHANGE_PLACE_TASK:
-            return {...state, data: state.data.map(g => (g.idGroup === state.currGroupId)
-                ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.task.id)
-                        ? action.payload.currTask
-                        : (t.id === action.payload.currTask.id)
-                            ? action.payload.task : t)}
-                : g)}
+            return {
+                ...state, data: state.data.map(g => (g.idGroup === state.currGroupId)
+                    ? {
+                        ...g, tasks: g.tasks.map(t => (t.id === action.payload.task.id)
+                            ? action.payload.currTask
+                            : (t.id === action.payload.currTask.id)
+                                ? action.payload.task : t)
+                    }
+                    : g)
+            }
         case CHANGE_DESCR_TASK:
-            return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
-                    ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
-                            ? {...t, description: action.payload.newDescr} : t)}
-                    : g)}
+            return {
+                ...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
+                    ? {
+                        ...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
+                            ? {...t, description: action.payload.newDescr} : t)
+                    }
+                    : g)
+            }
         case CHANGE_TEXT_TASK:
-            return {...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
-                    ? {...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
-                            ? {...t, text: action.payload.newText} : t)}
-                    : g)}
+            return {
+                ...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
+                    ? {
+                        ...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
+                            ? {...t, text: action.payload.newText} : t)
+                    }
+                    : g)
+            }
         default:
             return state
 
