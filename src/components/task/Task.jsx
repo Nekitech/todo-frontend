@@ -5,8 +5,8 @@ import bucket from '../../assets/img/bucket.svg'
 import radioActive from '../../assets/img/radioBtnActive.svg'
 import radioUnactive from '../../assets/img/radioBtnUnactive.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {setChangeStatusTask, setCurrTask, setDeleteTask} from "../../redux/todoSlice";
-import {setMenuTaskActive} from "../../redux/menuTaskActiveSlice";
+import {setChangeStatusTask, setCurrTask, setDeleteTask} from "../../redux/slices/todoSlice";
+import {setMenuTaskActive} from "../../redux/slices/menuTaskActiveSlice";
 
 function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
@@ -26,11 +26,11 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     if(e.target?.classList.contains(styles.task__container)
                     || e.target?.classList.contains(styles.task__text)) {
                         if(activeMenuTask) {
-                            dispatch(setCurrTask({idTask: props.task.id}))
+                            dispatch(setCurrTask({idTask: props.task._id}))
                         }
                         else {
                             dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
-                            dispatch(setCurrTask({idTask: props.task.id}))
+                            dispatch(setCurrTask({idTask: props.task._id}))
                         }
 
                     }}}
@@ -66,7 +66,7 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     null
                 }
                 <img onClick={() => {
-                    if(activeMenuTask && props.task.id === currTaskId) {
+                    if(activeMenuTask && props.task._id === currTaskId) {
                         dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                     }
                     dispatch(setDeleteTask({task: props.task}))

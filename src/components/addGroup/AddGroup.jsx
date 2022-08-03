@@ -3,7 +3,7 @@ import styles from './AddGroup.module.css'
 import cross from '../../assets/img/cross.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
-import {setAddGroup} from "../../redux/todoSlice";
+import {setAddGroup} from "../../redux/slices/todoSlice";
 
 function AddGroup(props) {
     const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from './GroupTasks.module.css'
 import Task from "../task/Task";
 import {useDispatch} from "react-redux";
-import {setChangePlaceTask} from "../../redux/todoSlice";
+import {setChangePlaceTask} from "../../redux/slices/todoSlice";
 
 function GroupTasks(props) {
     const [currTask, setCurrTask] = useState(null)
@@ -44,7 +44,7 @@ function GroupTasks(props) {
                       onDrop={(e) => {dropHandler(e, task)}}
 
                       task={task}
-                      key={task.id}
+                      key={task._id}
                       />
             )}
         </>

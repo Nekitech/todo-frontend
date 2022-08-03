@@ -4,7 +4,7 @@ import cross from '../../assets/img/cross.svg'
 import alarm from '../../assets/img/alarm.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
-import {setAddTask} from "../../redux/todoSlice";
+import {setAddTask} from "../../redux/slices/todoSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import {getDateTask} from "../../assets/data";
 
@@ -14,7 +14,7 @@ function AddTask({addT}) {
     let [textArea, setTextArea] = useState('')
     const handleAddNewTask = () => {
         const newTask = {
-            id: uniqid(),
+            _id: uniqid(),
             text: textArea,
             status: 'needTodo',
             date: getDateTask(),

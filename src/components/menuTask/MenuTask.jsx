@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import styles from './MenuTask.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import close from '../../assets/img/close_menuTask.svg';
-import {setChangeDescrTask, setChangeTextTask, setDeleteTask} from "../../redux/todoSlice";
-import {setMenuTaskActive} from "../../redux/menuTaskActiveSlice";
+import {setChangeDescrTask, setChangeTextTask, setDeleteTask} from "../../redux/slices/todoSlice";
+import {setMenuTaskActive} from "../../redux/slices/menuTaskActiveSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import pencil from '../../assets/img/pencil.svg';
 import deleteIcon from '../../assets/img/bucket.svg';
@@ -15,7 +15,7 @@ function MenuTask(props) {
     const currTaskId = useSelector(state => state.groupsReducer.currTaskId);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
     const groups = useSelector(state => state.groupsReducer.data);
-    const currTask = groups.filter(g => (g.idGroup === currGroupId))[0]?.tasks.filter(t => t.id === currTaskId)[0] || {};
+    const currTask = groups.filter(g => (g.idGroup === currGroupId))[0]?.tasks.filter(t => t._id === currTaskId)[0] || {};
 
     const [textArea, setTextArea] = useState('');
     const [descr, setDescr] = useState('');

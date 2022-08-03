@@ -16,7 +16,7 @@ const data = {
             nameGroup: 'Мой день',
             tasks: [
                 {
-                    id: uniqid(),
+                    _id: uniqid(),
                     text: "Завтра сходить в магазин, купить хлеба",
                     status: "needTodo",
                     description: "",
@@ -29,7 +29,7 @@ const data = {
             nameGroup: "Моя жизнь",
             tasks: [
                 {
-                    id: uniqid(),
+                    _id: uniqid(),
                     text: "Завтра сходить в магазин, купить молока",
                     status: "needTodo",
                     description: "",

@@ -1,6 +1,6 @@
-import data from "../assets/data";
+import data from "../../assets/data";
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import axios from "../queries/axios";
+import axios from "../../queries/axios";
 
 export const fetchGroups = createAsyncThunk(
     'groups/fetchGroups',
@@ -83,24 +83,24 @@ const todoSlice = createSlice({
         },
         setChangeStatusTask(state, action) {
             const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
-            const findTask = findGroup.tasks.find(t => t.id === action.payload.taskChanged.id);
+            const findTask = findGroup.tasks.find(t => t._id === action.payload.taskChanged._id);
             findTask.status = action.payload.status;
         },
         setChangePlaceTask(state, action) {
             const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
-            findGroup.tasks = findGroup.tasks.map(t => (t.id === action.payload.task.id)
+            findGroup.tasks = findGroup.tasks.map(t => (t._id === action.payload.task._id)
                 ? action.payload.currTask
-                : (t.id === action.payload.currTask.id)
+                : (t._id === action.payload.currTask._id)
                     ? action.payload.task: t)
         },
         setChangeDescrTask(state, action) {
             const findGroup = state.data.find(g => g.idGroup === action.payload.groupId);
-            const findTask = findGroup.tasks.find(t => t.id === action.payload.taskId);
+            const findTask = findGroup.tasks.find(t => t._id === action.payload.taskId);
             findTask.description = action.payload.newDescr;
         },
         setChangeTextTask(state, action) {
             const findGroup = state.data.find(g => g.idGroup === action.payload.groupId);
-            const findTask = findGroup.tasks.find(t => t.id === action.payload.taskId);
+            const findTask = findGroup.tasks.find(t => t._id === action.payload.taskId);
             findTask.text = action.payload.newText;
         }
     }

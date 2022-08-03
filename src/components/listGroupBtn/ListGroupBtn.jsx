@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from "./ListGroupBtn.module.css";
 import GroupBtn from "../groupBtn/GroupBtn";
 import {useDispatch, useSelector} from "react-redux";
-import {setChangePlaceGroup} from "../../redux/todoSlice";
+import {setChangePlaceGroup} from "../../redux/slices/todoSlice";
 
 
 function ListGroupBtn(props) {

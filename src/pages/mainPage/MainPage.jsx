@@ -4,7 +4,7 @@ import Group from "../../components/group/Group";
 import MenuTask from "../../components/menuTask/MenuTask";
 import styles from "./MainPage.module.css";
 import {useDispatch} from "react-redux";
-import {fetchGroups} from "../../redux/todoSlice";
+import {fetchGroups} from "../../redux/slices/todoSlice";
 
 
 function MainPage(props) {

@@ -2,8 +2,8 @@ import {applyMiddleware, createStore} from "redux";
 import {rootReducer} from "./rootReducer";
 import thunk from "redux-thunk";
 import {configureStore} from "@reduxjs/toolkit";
-import groupsReducer from "./todoSlice";
-import menuTaskActiveReducer from "./menuTaskActiveSlice";
+import groupsReducer from "./slices/todoSlice";
+import menuTaskActiveReducer from "./slices/menuTaskActiveSlice";
 
 
 // const store = createStore(rootReducer, composeWithDevTools( applyMiddleware(thunk)));

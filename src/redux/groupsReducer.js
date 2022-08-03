@@ -92,7 +92,7 @@ export function groupsReducer(state = initialState, action) {
             return {
                 ...state, data: state.data.map(g => g.idGroup === state.currGroupId
                     ? {
-                        ...g, tasks: g.tasks.map(task => (task.id === action.payload.taskChanged.id)
+                        ...g, tasks: g.tasks.map(task => (task._id === action.payload.taskChanged._id)
                             ? {...task, status: action.payload.status} : task)
                     }
                     : g)
@@ -102,9 +102,9 @@ export function groupsReducer(state = initialState, action) {
             return {
                 ...state, data: state.data.map(g => (g.idGroup === state.currGroupId)
                     ? {
-                        ...g, tasks: g.tasks.map(t => (t.id === action.payload.task.id)
+                        ...g, tasks: g.tasks.map(t => (t._id === action.payload.task._id)
                             ? action.payload.currTask
-                            : (t.id === action.payload.currTask.id)
+                            : (t._id === action.payload.currTask._id)
                                 ? action.payload.task : t)
                     }
                     : g)
@@ -113,7 +113,7 @@ export function groupsReducer(state = initialState, action) {
             return {
                 ...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
                     ? {
-                        ...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
+                        ...g, tasks: g.tasks.map(t => (t._id === action.payload.taskId)
                             ? {...t, description: action.payload.newDescr} : t)
                     }
                     : g)
@@ -122,7 +122,7 @@ export function groupsReducer(state = initialState, action) {
             return {
                 ...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
                     ? {
-                        ...g, tasks: g.tasks.map(t => (t.id === action.payload.taskId)
+                        ...g, tasks: g.tasks.map(t => (t._id === action.payload.taskId)
                             ? {...t, text: action.payload.newText} : t)
                     }
                     : g)
