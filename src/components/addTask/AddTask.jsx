@@ -4,7 +4,7 @@ import cross from '../../assets/img/cross.svg'
 import alarm from '../../assets/img/alarm.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
-import {setAddTask} from "../../redux/actions";
+import {setAddTask} from "../../redux/todoSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import {getDateTask} from "../../assets/data";
 
@@ -20,7 +20,7 @@ function AddTask({addT}) {
             date: getDateTask(),
             description: '',
         }
-        dispatch(setAddTask(newTask))
+        dispatch(setAddTask({newTask}))
         setTextArea('')
 
     }

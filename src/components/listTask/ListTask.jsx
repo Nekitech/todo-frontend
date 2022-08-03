@@ -3,7 +3,7 @@ import styles from './ListTask.module.css'
 import GroupTasks from "../groupTasks/GroupTasks";
 
 function ListTask(props) {
-
+    console.log(props.tasksList)
     return (
         <div className={styles.listTask}>
             <GroupTasks listTasks={props.tasksList

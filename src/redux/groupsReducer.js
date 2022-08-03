@@ -12,30 +12,6 @@ import {
 } from "./types";
 import axios from "../queries/axios.js";
 
-export const fetchGroups = createAsyncThunk(
-    'groups/fetchGroups',
-    async (url, config) => {
-        const groups = await axios.get('/groups',
-            {
-                headers: {'Authorization': "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'}
-            });
-
-        const tasks = await axios.get('/tasks', {
-            params: {
-                groupId: `${groups.data[0]?._id}`
-            },
-
-            headers: {
-                'Authorization':
-                    "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'
-            }
-        });
-
-        console.log(groups.data, tasks.data);
-        return [groups.data, tasks.data];
-
-    })
-
 
 const initialState = {
     currTaskId: '',
@@ -89,7 +65,6 @@ export function groupsReducer(state = initialState, action) {
             }
 
         case CHANGE_NAME_GROUP:
-            console.log('CHANGE_NAME_GROUP', action.payload.groupId, action.payload.newName)
             return {
                 ...state, data: state.data.map(g => (g.idGroup === action.payload.groupId)
                     ? {...g, nameGroup: action.payload.newName}

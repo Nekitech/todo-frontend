@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from "./ListGroupBtn.module.css";
 import GroupBtn from "../groupBtn/GroupBtn";
 import {useDispatch, useSelector} from "react-redux";
-import {setChangePlaceGroup} from "../../redux/actions";
+import {setChangePlaceGroup} from "../../redux/todoSlice";
 
 
 function ListGroupBtn(props) {
@@ -28,7 +28,7 @@ function ListGroupBtn(props) {
         e.preventDefault()
         e.currentTarget.style.background = '#A47878'
         e.currentTarget.style.transform = 'translateY(0)'
-        dispatch(setChangePlaceGroup(currGroup, group))
+        dispatch(setChangePlaceGroup({currGroup, group}))
 
     }
     return (

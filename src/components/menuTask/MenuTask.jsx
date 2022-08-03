@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import styles from './MenuTask.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import close from '../../assets/img/close_menuTask.svg';
-import {setChangeDescrTask, setChangeTextTask, setDeleteTask, setMenuTaskActive} from "../../redux/actions";
+import {setChangeDescrTask, setChangeTextTask, setDeleteTask} from "../../redux/todoSlice";
+import {setMenuTaskActive} from "../../redux/menuTaskActiveSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import pencil from '../../assets/img/pencil.svg';
 import deleteIcon from '../../assets/img/bucket.svg';
@@ -26,20 +27,20 @@ function MenuTask(props) {
 
 
     const handleEditTask = () => {
-        dispatch(setChangeTextTask(textArea, currTaskId, currGroupId))
+        dispatch(setChangeTextTask({newText: textArea, taskId: currTaskId, groupId: currGroupId}))
         setTextArea(textArea)
 
     }
 
     const handleEditDescr = () => {
-        dispatch(setChangeDescrTask(descr, currTaskId, currGroupId))
+        dispatch(setChangeDescrTask({newDescr: descr, taskId: currTaskId, groupId: currGroupId}))
     }
     return (
         <div className={(activeMenuTask)
             ? styles.menuTask + ' ' + styles.activeMenu
             : styles.menuTask}>
             <img onClick={() => {
-                dispatch(setMenuTaskActive(!activeMenuTask))
+                dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
             }} src={close} className={styles.menuTask__close} alt={''}/>
             <div className={styles.menuTask__container}>
                 <div className={styles.menuTask__inputWrapper}>
@@ -92,9 +93,9 @@ function MenuTask(props) {
 
                 <img onClick={() => {
                     if(activeMenuTask) {
-                        dispatch(setMenuTaskActive(!activeMenuTask))
+                        dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                     }
-                    dispatch(setDeleteTask(currTask))
+                    dispatch(setDeleteTask({task: currTask}))
 
                 }} src={deleteIcon} className={styles.menuTask__footerDeleteIcon} alt={''}/>
             </div>

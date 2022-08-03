@@ -3,7 +3,7 @@ import styles from './AddGroup.module.css'
 import cross from '../../assets/img/cross.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
-import {setAddGroup} from "../../redux/actions";
+import {setAddGroup} from "../../redux/todoSlice";
 
 function AddGroup(props) {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function AddGroup(props) {
             nameGroup: nameGroup,
             tasks: []
         }
-        dispatch(setAddGroup(newGroup))
+        dispatch(setAddGroup({newGroup}))
         setNameGroup('')
     }
     return (

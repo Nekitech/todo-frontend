@@ -2,7 +2,8 @@ import React, {useRef} from 'react';
 import styles from "./GroupBtn.module.css";
 import bucket from '../../assets/img/bucket.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {setChangeNameGroup, setCurrGroup, setDeleteGroup, setMenuTaskActive} from "../../redux/actions";
+import {setChangeNameGroup, setCurrGroup, setDeleteGroup} from "../../redux/todoSlice";
+import {setMenuTaskActive} from "../../redux/menuTaskActiveSlice";
 import pencil from '../../assets/img/pencil.svg'
 
 function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
@@ -47,23 +48,23 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
                    value={props.name}
                    onClick={(e) => {
                        if (activeMenuTask && props.idGroup !== currGroupId) {
-                           dispatch(setMenuTaskActive(!activeMenuTask))
+                           dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                        }
-                       dispatch(setCurrGroup(props.idGroup))
+                       dispatch(setCurrGroup({idGroup: props.idGroup}))
                        checkActiveBtn(e)
                    }}
                    onChange={(e) => {
                        console.log(nameGroup.current.value)
-                       dispatch(setChangeNameGroup(props.idGroup, nameGroup.current.value))
+                       dispatch(setChangeNameGroup({groupId: props.idGroup, newName: nameGroup.current.value}))
                    }}
                    className={(props.idGroup === currGroupId)
                        ? styles.groupName + " " + styles.activeBtn
                        : styles.groupName}/>
             <img onClick={() => {
                 if (activeMenuTask && props.idGroup === currGroupId) {
-                    dispatch(setMenuTaskActive(!activeMenuTask))
+                    dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                 }
-                dispatch(setDeleteGroup(props.idGroup))
+                dispatch(setDeleteGroup({groupId: props.idGroup}))
             }} className={styles.iconGroupDelete} src={bucket} alt=""/>
         </div>
     );

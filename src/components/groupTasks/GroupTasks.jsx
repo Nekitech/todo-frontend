@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from './GroupTasks.module.css'
 import Task from "../task/Task";
 import {useDispatch} from "react-redux";
-import {setChangePlaceTask} from "../../redux/actions";
+import {setChangePlaceTask} from "../../redux/todoSlice";
 
 function GroupTasks(props) {
     const [currTask, setCurrTask] = useState(null)
@@ -26,7 +26,7 @@ function GroupTasks(props) {
         e.preventDefault()
         e.currentTarget.style.background = '#9D8E8E'
         e.currentTarget.style.transform = 'translateY(0)'
-        dispatch(setChangePlaceTask(currTask, task))
+        dispatch(setChangePlaceTask({currTask, task}))
 
 
     }
