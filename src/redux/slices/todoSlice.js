@@ -2,27 +2,13 @@ import data from "../../assets/data";
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from "../../queries/axios";
 
-export const fetchGroups = createAsyncThunk(
+export const fetchTodo = createAsyncThunk(
     'groups/fetchGroups',
     async () => {
         const groups = await axios.get('/groups',
             {
                 headers: {'Authorization': "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'}
             });
-
-        const tasks = await axios.get('/tasks', {
-            params: {
-                groupId: `${groups.data[0]?._id}`
-            },
-
-            headers: {
-                'Authorization':
-                    "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'
-            }
-        });
-
-        groups.data[0].tasks = tasks.data;
-
         console.log(groups.data);
         return groups.data;
 
@@ -31,9 +17,10 @@ export const fetchGroups = createAsyncThunk(
 const todoSlice = createSlice({
     name: 'todo',
     initialState: {
+        status: '',
         currTaskId: '',
-        currGroupId: data.data[0]._id,
-        data: data.data
+        currGroupId: '',
+        data: []
     },
     reducers: {
         setCurrGroup(state, action) {
@@ -91,7 +78,7 @@ const todoSlice = createSlice({
             findGroup.tasks = findGroup.tasks.map(t => (t._id === action.payload.task._id)
                 ? action.payload.currTask
                 : (t._id === action.payload.currTask._id)
-                    ? action.payload.task: t)
+                    ? action.payload.task : t)
         },
         setChangeDescrTask(state, action) {
             const findGroup = state.data.find(g => g._id === action.payload.groupId);
@@ -105,14 +92,23 @@ const todoSlice = createSlice({
         }
     },
     extraReducers: {
-        [fetchGroups.fulfilled]: (state, action) => {
+        [fetchTodo.pending]: (state) => {
+            state.status = 'loading';
+        },
+        [fetchTodo.fulfilled]: (state, action) => {
             state.data = action.payload;
             state.currGroupId = action.payload[0]._id;
+            state.status = 'loaded';
+        },
+        [fetchTodo.rejected]: (state) => {
+            state.data = []
+            state.status = 'error';
         }
     }
 });
 
-export const {setCurrGroup,
+export const {
+    setCurrGroup,
     setCurrTask,
     setAddGroup,
     setDeleteGroup,
@@ -123,6 +119,7 @@ export const {setCurrGroup,
     setChangeStatusTask,
     setChangePlaceTask,
     setChangeDescrTask,
-    setChangeTextTask} = todoSlice.actions;
+    setChangeTextTask
+} = todoSlice.actions;
 
 export default todoSlice.reducer;
