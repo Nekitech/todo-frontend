@@ -74,9 +74,7 @@ const todoSlice = createSlice({
             findGroup.nameGroup = action.payload.newName;
         },
         setAddTask(state, action) {
-            console.log(state, action.payload)
             const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
-            console.log(findGroup, state.currGroupId);
             findGroup.tasks.push(action.payload.newTask);
         },
         setDeleteTask(state, action) {
@@ -96,18 +94,15 @@ const todoSlice = createSlice({
                     ? action.payload.task: t)
         },
         setChangeDescrTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
-            findGroup.tasks = findGroup.tasks.map(t => (t.id === action.payload.taskId)
-                ? {...t, descr: action.payload.descr}
-                : t);
+            const findGroup = state.data.find(g => g.idGroup === action.payload.groupId);
+            const findTask = findGroup.tasks.find(t => t.id === action.payload.taskId);
+            findTask.description = action.payload.newDescr;
         },
         setChangeTextTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
-            findGroup.tasks = findGroup.tasks.map(t => (t.id === action.payload.taskId)
-                ? {...t, text: action.payload.text}
-                : t);
+            const findGroup = state.data.find(g => g.idGroup === action.payload.groupId);
+            const findTask = findGroup.tasks.find(t => t.id === action.payload.taskId);
+            findTask.text = action.payload.newText;
         }
-
     }
 });
 

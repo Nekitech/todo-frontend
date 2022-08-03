@@ -8,7 +8,6 @@ import {useSelector} from "react-redux";
 const Group = () => {
     const groups = useSelector(state => state.groupsReducer.data);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
-    console.log(groups)
     return (
         <div className={styles.startGroup}>
             {

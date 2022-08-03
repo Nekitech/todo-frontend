@@ -54,7 +54,6 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
                        checkActiveBtn(e)
                    }}
                    onChange={(e) => {
-                       console.log(nameGroup.current.value)
                        dispatch(setChangeNameGroup({groupId: props.idGroup, newName: nameGroup.current.value}))
                    }}
                    className={(props.idGroup === currGroupId)

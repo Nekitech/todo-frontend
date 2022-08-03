@@ -3,11 +3,11 @@ import {createSlice} from "@reduxjs/toolkit";
 const menuTaskActiveSlice = createSlice({
     name: 'menuTaskActive',
     initialState: {
-        active: false
+        activeMenuTask: false
     },
     reducers: {
         setMenuTaskActive(state, action) {
-            state.active = action.payload.activeMenuTask;
+            state.activeMenuTask = action.payload.activeMenuTask;
         }
     }
 });
