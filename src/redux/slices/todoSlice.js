@@ -4,7 +4,7 @@ import axios from "../../queries/axios";
 
 export const fetchGroups = createAsyncThunk(
     'groups/fetchGroups',
-    async (url, config) => {
+    async () => {
         const groups = await axios.get('/groups',
             {
                 headers: {'Authorization': "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'}
@@ -24,7 +24,7 @@ export const fetchGroups = createAsyncThunk(
         groups.data[0].tasks = tasks.data;
 
         console.log(groups.data);
-        return groups.data
+        return groups.data;
 
     })
 
@@ -32,7 +32,7 @@ const todoSlice = createSlice({
     name: 'todo',
     initialState: {
         currTaskId: '',
-        currGroupId: data.data[0].idGroup,
+        currGroupId: data.data[0]._id,
         data: data.data
     },
     reducers: {
@@ -44,7 +44,7 @@ const todoSlice = createSlice({
         },
         setAddGroup(state, action) {
             if (state.data.length === 0) {
-                state.currGroupId = action.payload.newGroup.idGroup;
+                state.currGroupId = action.payload.newGroup._id;
                 state.data.push(action.payload.newGroup);
             } else {
                 state.data.push(action.payload.newGroup);
@@ -55,53 +55,59 @@ const todoSlice = createSlice({
                 state.data = [];
             } else {
                 if (action.payload.groupId === state.currGroupId) {
-                    state.currGroupId = state.data.find(g => g.idGroup !== action.payload.groupId).idGroup;
-                    state.data = state.data.filter(g => g.idGroup !== action.payload.groupId);
+                    state.currGroupId = state.data.find(g => g._id !== action.payload.groupId)._id;
+                    state.data = state.data.filter(g => g._id !== action.payload.groupId);
                 } else {
-                    state.data = state.data.filter(g => g.idGroup !== action.payload.groupId);
+                    state.data = state.data.filter(g => g._id !== action.payload.groupId);
                 }
             }
         },
         setChangePlaceGroup(state, action) {
-            state.data = state.data.map(g => (g.idGroup === action.payload.group.idGroup)
+            state.data = state.data.map(g => (g._id === action.payload.group._id)
                 ? action.payload.currGroup
-                : (g.idGroup === action.payload.currGroup.idGroup)
+                : (g._id === action.payload.currGroup._id)
                     ? action.payload.group
                     : g);
         },
         setChangeNameGroup(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === action.payload.groupId);
+            const findGroup = state.data.find(g => g._id === action.payload.groupId);
             findGroup.nameGroup = action.payload.newName;
         },
         setAddTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
+            const findGroup = state.data.find(g => g._id === state.currGroupId);
             findGroup.tasks.push(action.payload.newTask);
         },
         setDeleteTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
+            const findGroup = state.data.find(g => g._id === state.currGroupId);
             findGroup.tasks.splice(findGroup.tasks.indexOf(action.payload.task), 1);
         },
         setChangeStatusTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
+            const findGroup = state.data.find(g => g._id === state.currGroupId);
             const findTask = findGroup.tasks.find(t => t._id === action.payload.taskChanged._id);
             findTask.status = action.payload.status;
         },
         setChangePlaceTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === state.currGroupId);
+            const findGroup = state.data.find(g => g._id === state.currGroupId);
             findGroup.tasks = findGroup.tasks.map(t => (t._id === action.payload.task._id)
                 ? action.payload.currTask
                 : (t._id === action.payload.currTask._id)
                     ? action.payload.task: t)
         },
         setChangeDescrTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === action.payload.groupId);
+            const findGroup = state.data.find(g => g._id === action.payload.groupId);
             const findTask = findGroup.tasks.find(t => t._id === action.payload.taskId);
             findTask.description = action.payload.newDescr;
         },
         setChangeTextTask(state, action) {
-            const findGroup = state.data.find(g => g.idGroup === action.payload.groupId);
+            const findGroup = state.data.find(g => g._id === action.payload.groupId);
             const findTask = findGroup.tasks.find(t => t._id === action.payload.taskId);
             findTask.text = action.payload.newText;
+        }
+    },
+    extraReducers: {
+        [fetchGroups.fulfilled]: (state, action) => {
+            state.data = action.payload;
+            state.currGroupId = action.payload[0]._id;
         }
     }
 });

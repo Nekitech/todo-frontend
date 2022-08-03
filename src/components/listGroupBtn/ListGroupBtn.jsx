@@ -31,6 +31,8 @@ function ListGroupBtn(props) {
         dispatch(setChangePlaceGroup({currGroup, group}))
 
     }
+
+
     return (
         <div className={styles.listGroup}>
             {
@@ -44,8 +46,8 @@ function ListGroupBtn(props) {
                         onDrop={(e) => {dropHandler(e, g)}}
 
                         name={g.nameGroup}
-                        key={g.idGroup}
-                        idGroup={g.idGroup}
+                        key={g?._id}
+                        idGroup={g?._id}
                         />
                 )
             }

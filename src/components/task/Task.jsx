@@ -12,6 +12,7 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
     const dispatch = useDispatch();
     const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
     const currTaskId = useSelector(state => state.groupsReducer.currTaskId);
+
     return (
         <div
             draggable={draggable}

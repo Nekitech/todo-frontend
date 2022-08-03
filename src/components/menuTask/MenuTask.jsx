@@ -15,7 +15,7 @@ function MenuTask(props) {
     const currTaskId = useSelector(state => state.groupsReducer.currTaskId);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
     const groups = useSelector(state => state.groupsReducer.data);
-    const currTask = groups.filter(g => (g.idGroup === currGroupId))[0]?.tasks.filter(t => t._id === currTaskId)[0] || {};
+    const currTask = groups.filter(g => (g._id === currGroupId))[0]?.tasks.filter(t => t._id === currTaskId)[0] || {};
 
     const [textArea, setTextArea] = useState('');
     const [descr, setDescr] = useState('');

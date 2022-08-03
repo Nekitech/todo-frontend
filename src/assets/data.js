@@ -12,7 +12,7 @@ const data = {
     currTaskId: '',
     data: [
         {
-            idGroup: uniqid(),
+            _id: uniqid(),
             nameGroup: 'Мой день',
             tasks: [
                 {
@@ -25,7 +25,7 @@ const data = {
             ]
         },
         {
-            idGroup: uniqid(),
+            _id: uniqid(),
             nameGroup: "Моя жизнь",
             tasks: [
                 {

@@ -8,6 +8,9 @@ import {useSelector} from "react-redux";
 const Group = () => {
     const groups = useSelector(state => state.groupsReducer.data);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
+
+
+    console.log(groups, groups.filter(g => g._id === currGroupId)[0]?.tasks)
     return (
         <div className={styles.startGroup}>
             {
@@ -16,7 +19,7 @@ const Group = () => {
                     <>
                         <ListTask
                             tasksList={groups
-                                .filter(g => g.idGroup === currGroupId)[0]?.tasks}
+                                .filter(g => g._id === currGroupId)[0]?.tasks}
                             />
                         <AddTask/>
                     </>
