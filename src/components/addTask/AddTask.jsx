@@ -3,8 +3,8 @@ import styles from './AddTask.module.css'
 import cross from '../../assets/img/cross.svg'
 import alarm from '../../assets/img/alarm.svg'
 import uniqid from "uniqid";
-import {useDispatch} from "react-redux";
-import {setAddTask} from "../../redux/slices/todoSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCreateTask, setAddTask} from "../../redux/slices/todoSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import {getDateTask} from "../../assets/data";
 
@@ -12,6 +12,8 @@ import {getDateTask} from "../../assets/data";
 function AddTask({addT}) {
     const dispatch = useDispatch();
     let [textArea, setTextArea] = useState('')
+    const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
+    console.log(currGroupId)
     const handleAddNewTask = () => {
         const newTask = {
             _id: uniqid(),
@@ -21,6 +23,7 @@ function AddTask({addT}) {
             description: '',
         }
         dispatch(setAddTask({newTask}))
+        dispatch(fetchCreateTask({currGroupId, text: newTask.text}))
         setTextArea('')
 
     }

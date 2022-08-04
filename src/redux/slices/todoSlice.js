@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import axios from "../../queries/axios";
+import axios from "../../api/axios";
 
 export const fetchTodo = createAsyncThunk(
     'todo/fetchTodo',
@@ -11,7 +11,21 @@ export const fetchTodo = createAsyncThunk(
         console.log(groups.data);
         return groups.data;
 
-    })
+});
+
+export const fetchCreateTask = createAsyncThunk(
+    'todo/fetchCreateTask',
+    async ({currGroupId, text}) => {
+        const tasks = await axios.post('/tasks',
+            {
+                currGroupId: `${currGroupId}`,
+                text: text,
+                status: 'needTodo',
+                description: ''
+            });
+        console.log(tasks.data);
+        return tasks.data;
+});
 
 const todoSlice = createSlice({
     name: 'todo',
