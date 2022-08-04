@@ -32,4 +32,7 @@
     text-decoration-color: #D6B1B1;
     color: #D6B1B1;
     margin-left: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }

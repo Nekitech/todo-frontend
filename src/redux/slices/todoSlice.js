@@ -1,13 +1,12 @@
-import data from "../../assets/data";
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from "../../queries/axios";
 
 export const fetchTodo = createAsyncThunk(
-    'groups/fetchGroups',
-    async () => {
+    'todo/fetchTodo',
+    async ({token}) => {
         const groups = await axios.get('/groups',
             {
-                headers: {'Authorization': "bearer " + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmU5NGZjYTJmMDgxNjVmZjQzNDQwMzkiLCJpYXQiOjE2NTk0NTc0OTAsImV4cCI6MTY2MDA2MjI5MH0.IJrQJp_sQUahn2PXb01P-j1gfvOq7StyewhatPPyOf4'}
+                headers: {'Authorization': `bearer ${token}`}
             });
         console.log(groups.data);
         return groups.data;

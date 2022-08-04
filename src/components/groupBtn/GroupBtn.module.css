@@ -30,7 +30,7 @@
     border: none;
     outline: none;
     background-color: transparent;
-
+    cursor: pointer;
 }
 .activeBtn {
     border-bottom: 4px solid #D9D9D9;

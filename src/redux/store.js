@@ -1,16 +1,14 @@
-import {applyMiddleware, createStore} from "redux";
-import {rootReducer} from "./rootReducer";
 import thunk from "redux-thunk";
 import {configureStore} from "@reduxjs/toolkit";
 import groupsReducer from "./slices/todoSlice";
 import menuTaskActiveReducer from "./slices/menuTaskActiveSlice";
+import authReducer from "./slices/authSlice";
 
-
-// const store = createStore(rootReducer, composeWithDevTools( applyMiddleware(thunk)));
 const store = configureStore({
     reducer: {
         groupsReducer: groupsReducer,
-        menuTaskActiveReducer: menuTaskActiveReducer
+        menuTaskActiveReducer: menuTaskActiveReducer,
+        auth: authReducer
     },
     middleware: [thunk]
 });

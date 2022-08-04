@@ -11,7 +11,7 @@ const Group = () => {
     const isLoading = useSelector(state => state.groupsReducer.status) === 'loading';
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
 
-    console.log(groups, groups.filter(g => g._id === currGroupId)[0]?.tasks)
+    // console.log(groups, groups.filter(g => g._id === currGroupId)[0]?.tasks)
     return (
         <div className={styles.startGroup}>
             {
