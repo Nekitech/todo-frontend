@@ -11,10 +11,9 @@ function LoginBlock(props) {
     const navigate = useNavigate();
 
     const logout = () => {
-        if (window.confirm('Вы действительно хотите выйти?')) {
-            dispatch(setLogout())
-            navigate(`/${pathGlobal}`)
-        }
+        dispatch(setLogout())
+        navigate(`/${pathGlobal}`)
+
     }
 
     return (
