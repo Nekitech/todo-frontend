@@ -5,13 +5,14 @@ import bucket from '../../assets/img/bucket.svg'
 import radioActive from '../../assets/img/radioBtnActive.svg'
 import radioUnactive from '../../assets/img/radioBtnUnactive.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {setChangeStatusTask, setCurrTask, setDeleteTask} from "../../redux/slices/todoSlice";
+import {fetchDeleteTask, setChangeStatusTask, setCurrTask, setDeleteTask} from "../../redux/slices/todoSlice";
 import {setMenuTaskActive} from "../../redux/slices/menuTaskActiveSlice";
 
 function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDrop, ...props}) {
     const dispatch = useDispatch();
     const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
     const currTaskId = useSelector(state => state.groupsReducer.currTaskId);
+    const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
 
     return (
         <div
@@ -70,7 +71,9 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     if(activeMenuTask && props.task._id === currTaskId) {
                         dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                     }
+                    console.log(props.task._id, currTaskId)
                     dispatch(setDeleteTask({task: props.task}))
+                    // dispatch(fetchDeleteTask({groupId: currGroupId, taskId: props.task._id}))
 
                 }}
                      className={styles.task__bucket} src={bucket} alt="icon"/>

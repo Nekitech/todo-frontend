@@ -27,6 +27,18 @@ export const fetchCreateTask = createAsyncThunk(
         return tasks.data;
 });
 
+export const fetchDeleteTask = createAsyncThunk(
+    'todo/fetchDeleteTask',
+    async ({groupId, taskId}) => {
+        const tasks = await axios.delete(`/tasks/${taskId}`,
+            {},
+            {
+                groupId: `${groupId}`
+            });
+        console.log(tasks.data);
+        return tasks.data;
+});
+
 const todoSlice = createSlice({
     name: 'todo',
     initialState: {
@@ -79,7 +91,8 @@ const todoSlice = createSlice({
         },
         setDeleteTask(state, action) {
             const findGroup = state.data.find(g => g._id === state.currGroupId);
-            findGroup.tasks.splice(findGroup.tasks.indexOf(action.payload.task), 1);
+            const indexDeletedTask = findGroup.tasks.findIndex(t => t._id === action.payload.task._id);
+            findGroup.tasks.splice(indexDeletedTask, 1);
         },
         setChangeStatusTask(state, action) {
             const findGroup = state.data.find(g => g._id === state.currGroupId);
