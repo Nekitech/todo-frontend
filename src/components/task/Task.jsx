@@ -71,9 +71,8 @@ function Task({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, onDro
                     if(activeMenuTask && props.task._id === currTaskId) {
                         dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                     }
-                    console.log(props.task._id, currTaskId)
                     dispatch(setDeleteTask({task: props.task}))
-                    // dispatch(fetchDeleteTask({groupId: currGroupId, taskId: props.task._id}))
+                    dispatch(fetchDeleteTask({groupId: currGroupId, taskId: props.task._id}))
 
                 }}
                      className={styles.task__bucket} src={bucket} alt="icon"/>

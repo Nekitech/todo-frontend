@@ -30,11 +30,10 @@ export const fetchCreateTask = createAsyncThunk(
 export const fetchDeleteTask = createAsyncThunk(
     'todo/fetchDeleteTask',
     async ({groupId, taskId}) => {
-        const tasks = await axios.delete(`/tasks/${taskId}`,
-            {},
-            {
+        const tasks = await axios.delete(`/tasks/${taskId}`, {
+            data: {
                 groupId: `${groupId}`
-            });
+            } });
         console.log(tasks.data);
         return tasks.data;
 });
