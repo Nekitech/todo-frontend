@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import styles from "./GroupBtn.module.css";
 import bucket from '../../assets/img/bucket.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {setChangeNameGroup, setCurrGroup, setDeleteGroup} from "../../redux/slices/todoSlice";
+import {fetchDeleteGroup, setChangeNameGroup, setCurrGroup, setDeleteGroup} from "../../redux/slices/todoSlice";
 import {setMenuTaskActive} from "../../redux/slices/menuTaskActiveSlice";
 import pencil from '../../assets/img/pencil.svg'
 
@@ -64,6 +64,7 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
                     dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                 }
                 dispatch(setDeleteGroup({groupId: props.idGroup}))
+                dispatch(fetchDeleteGroup({groupId: props.idGroup}))
             }} className={styles.iconGroupDelete} src={bucket} alt=""/>
         </div>
     );

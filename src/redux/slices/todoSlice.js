@@ -4,13 +4,8 @@ import axios from "../../api/axios";
 export const fetchTodo = createAsyncThunk(
     'todo/fetchTodo',
     async ({token}) => {
-        const groups = await axios.get('/groups',
-            {
-                headers: {'Authorization': `bearer ${token}`}
-            });
-
+        const groups = await axios.get('/groups');
         return groups.data;
-
 });
 
 export const fetchCreateTask = createAsyncThunk(
@@ -52,6 +47,27 @@ export const fetchUpdateTask = createAsyncThunk(
         });
 
         return updateTask.data;
+});
+
+export const fetchCreateGroup = createAsyncThunk(
+    'todo/fetchCreateGroup',
+    async ({nameGroup, idGroup}) => {
+        console.log(nameGroup, idGroup);
+        const groups = await axios.post('/groups',
+            {
+                nameGroup: nameGroup,
+                idGroup: idGroup
+            });
+
+        return groups.data;
+});
+
+export const fetchDeleteGroup = createAsyncThunk(
+    'todo/fetchDeleteGroup',
+    async ({groupId}) => {
+        const groups = await axios.delete(`/groups/${groupId}`);
+
+        return groups.data;
 });
 
 const todoSlice = createSlice({

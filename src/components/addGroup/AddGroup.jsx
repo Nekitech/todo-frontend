@@ -3,7 +3,8 @@ import styles from './AddGroup.module.css'
 import cross from '../../assets/img/cross.svg'
 import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
-import {setAddGroup} from "../../redux/slices/todoSlice";
+import {fetchCreateGroup, setAddGroup} from "../../redux/slices/todoSlice";
+import mongoose from "mongoose";
 
 function AddGroup(props) {
     const dispatch = useDispatch();
@@ -11,12 +12,19 @@ function AddGroup(props) {
 
     const handleAddGroup = () => {
         const newGroup = {
-            idGroup: uniqid(),
             nameGroup: nameGroup,
+            _id: new mongoose.Types.ObjectId().toString(),
             tasks: []
         }
-        dispatch(setAddGroup({newGroup}))
-        setNameGroup('')
+        if(newGroup.nameGroup.length >= 2 && newGroup.nameGroup.length <= 30) {
+            dispatch(setAddGroup({newGroup}))
+            dispatch(fetchCreateGroup({nameGroup: newGroup.nameGroup, idGroup: newGroup._id}))
+            setNameGroup('')
+        }
+        else {
+            alert('Название группы должно быть от 4 до 30 символов')
+        }
+
     }
     return (
         <div className={styles.addGroup} >
