@@ -2,7 +2,13 @@ import React, {useState, useEffect} from 'react';
 import styles from './MenuTask.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import close from '../../assets/img/close_menuTask.svg';
-import {setChangeDescrTask, setChangeTextTask, setDeleteTask} from "../../redux/slices/todoSlice";
+import {
+    fetchDeleteTask,
+    fetchUpdateTask,
+    setChangeDescrTask,
+    setChangeTextTask,
+    setDeleteTask
+} from "../../redux/slices/todoSlice";
 import {setMenuTaskActive} from "../../redux/slices/menuTaskActiveSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import pencil from '../../assets/img/pencil.svg';
@@ -28,12 +34,24 @@ function MenuTask(props) {
 
     const handleEditTask = () => {
         dispatch(setChangeTextTask({newText: textArea, taskId: currTaskId, groupId: currGroupId}))
+        dispatch(fetchUpdateTask({
+            taskId: currTask._id,
+            groupId: currGroupId,
+            dataChange: textArea,
+            nameData: 'text'
+        }))
         setTextArea(textArea)
 
     }
 
     const handleEditDescr = () => {
         dispatch(setChangeDescrTask({newDescr: descr, taskId: currTaskId, groupId: currGroupId}))
+        dispatch(fetchUpdateTask({
+            taskId: currTask._id,
+            groupId: currGroupId,
+            dataChange: descr,
+            nameData: 'description'
+        }))
     }
     return (
         <div className={(activeMenuTask)
@@ -96,6 +114,7 @@ function MenuTask(props) {
                         dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))
                     }
                     dispatch(setDeleteTask({task: currTask}))
+                    dispatch(fetchDeleteTask({groupId: currGroupId, taskId: currTask._id}))
 
                 }} src={deleteIcon} className={styles.menuTask__footerDeleteIcon} alt={''}/>
             </div>

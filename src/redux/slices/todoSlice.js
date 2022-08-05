@@ -8,7 +8,7 @@ export const fetchTodo = createAsyncThunk(
             {
                 headers: {'Authorization': `bearer ${token}`}
             });
-        console.log(groups.data);
+
         return groups.data;
 
 });
@@ -24,7 +24,7 @@ export const fetchCreateTask = createAsyncThunk(
                 status: 'needTodo',
                 description: ''
             });
-        console.log(tasks.data);
+
         return tasks.data;
 });
 
@@ -36,10 +36,22 @@ export const fetchDeleteTask = createAsyncThunk(
                 data: {
                     groupId: `${groupId}`
                 } });
-            console.log(tasks.data);
+
             return tasks.data;
         }
 
+});
+
+export const fetchUpdateTask = createAsyncThunk(
+    'todo/fetchUpdateTask',
+    async ({taskId, groupId, dataChange, nameData}) => {
+        const updateTask = await axios.post(`/tasks/${taskId}`, {
+            groupId: groupId,
+            dataChange: dataChange,
+            nameData: nameData
+        });
+
+        return updateTask.data;
 });
 
 const todoSlice = createSlice({
