@@ -15,9 +15,10 @@ export const fetchTodo = createAsyncThunk(
 
 export const fetchCreateTask = createAsyncThunk(
     'todo/fetchCreateTask',
-    async ({currGroupId, text}) => {
+    async ({currGroupId, text, _id}) => {
         const tasks = await axios.post('/tasks',
             {
+                _id: _id,
                 currGroupId: `${currGroupId}`,
                 text: text,
                 status: 'needTodo',
@@ -30,12 +31,15 @@ export const fetchCreateTask = createAsyncThunk(
 export const fetchDeleteTask = createAsyncThunk(
     'todo/fetchDeleteTask',
     async ({groupId, taskId}) => {
-        const tasks = await axios.delete(`/tasks/${taskId}`, {
-            data: {
-                groupId: `${groupId}`
-            } });
-        console.log(tasks.data);
-        return tasks.data;
+        if(groupId && taskId) {
+            const tasks = await axios.delete(`/tasks/${taskId}`, {
+                data: {
+                    groupId: `${groupId}`
+                } });
+            console.log(tasks.data);
+            return tasks.data;
+        }
+
 });
 
 const todoSlice = createSlice({

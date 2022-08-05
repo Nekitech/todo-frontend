@@ -7,23 +7,23 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchCreateTask, setAddTask} from "../../redux/slices/todoSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import {getDateTask} from "../../assets/data";
-
+import mongoose from 'mongoose';
 
 function AddTask({addT}) {
     const dispatch = useDispatch();
     let [textArea, setTextArea] = useState('')
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
-    console.log(currGroupId)
+
     const handleAddNewTask = () => {
         const newTask = {
-            _id: uniqid(),
+            _id: new mongoose.Types.ObjectId().toString(),
             text: textArea,
             status: 'needTodo',
             date: getDateTask(),
             description: '',
         }
         dispatch(setAddTask({newTask}))
-        dispatch(fetchCreateTask({currGroupId, text: newTask.text}))
+        dispatch(fetchCreateTask({currGroupId, text: newTask.text, _id: newTask._id}))
         setTextArea('')
 
     }
