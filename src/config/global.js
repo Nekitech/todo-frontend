@@ -1,1 +1,1 @@
-export const pathGlobal = 'todo-frontend';
+export const pathGlobal = '';
