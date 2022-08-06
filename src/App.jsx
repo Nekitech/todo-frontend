@@ -8,7 +8,7 @@ import {pathGlobal} from "./config/global";
 function App() {
     return (
         <Routes>
-            <Route path={`/${pathGlobal}/MainPage`} element={<MainPage/>}/>
+            <Route path={`/${pathGlobal}MainPage`} element={<MainPage/>}/>
             <Route path={`/${pathGlobal}`} element={<AuthAndRegPage/>}/>
         </Routes>
 

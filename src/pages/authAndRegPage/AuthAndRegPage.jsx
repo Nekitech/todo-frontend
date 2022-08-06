@@ -20,7 +20,7 @@ function AuthAndRegPage(props) {
 
     useEffect(() => {
         if (isToken) {
-            navigate(`/${pathGlobal}/MainPage`)
+            navigate(`/${pathGlobal}MainPage`)
         }
     }, [isToken])
 
