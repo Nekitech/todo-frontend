@@ -2,14 +2,18 @@ import React, {useState} from 'react';
 import styles from './AddTask.module.css'
 import cross from '../../assets/img/cross.svg'
 import alarm from '../../assets/img/alarm.svg'
-import uniqid from "uniqid";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCreateTask, setAddTask} from "../../redux/slices/todoSlice";
 import InputTask from "../UI/inputTask/InputTask";
-import {getDateTask} from "../../assets/data";
 import mongoose from 'mongoose';
 
 function AddTask({addT}) {
+    const getDateTask = () => {
+        let [day, month, year] = [new Date().getDate(), new Date().getMonth() + 1, new Date().getFullYear()]
+        month = (month < 10) ? ('0'+month) : (month)
+
+        return day + '.' + month + '.' + year
+    }
     const dispatch = useDispatch();
     let [textArea, setTextArea] = useState('')
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);

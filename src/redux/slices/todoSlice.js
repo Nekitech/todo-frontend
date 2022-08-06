@@ -154,7 +154,7 @@ const todoSlice = createSlice({
         },
         [fetchTodo.fulfilled]: (state, action) => {
             state.data = action.payload;
-            state.currGroupId = action.payload[0]._id;
+            state.currGroupId = action.payload[0]?._id || '';
             state.status = 'loaded';
         },
         [fetchTodo.rejected]: (state) => {

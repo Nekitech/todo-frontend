@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styles from './AddGroup.module.css'
 import cross from '../../assets/img/cross.svg'
-import uniqid from "uniqid";
 import {useDispatch} from "react-redux";
 import {fetchCreateGroup, setAddGroup} from "../../redux/slices/todoSlice";
 import mongoose from "mongoose";
