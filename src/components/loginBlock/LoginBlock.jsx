@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './LoginBlock.module.css';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {pathGlobal} from "../../config/global";
 import {useDispatch, useSelector} from "react-redux";
 import {setLogout} from "../../redux/slices/authSlice";

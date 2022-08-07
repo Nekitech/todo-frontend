@@ -6,6 +6,7 @@ export const fetchAuth = createAsyncThunk('auth/fetch',
     async (params) => {
         const {data} = await axios.post('/auth/login', params);
         console.log(data);
+
         return data;
 });
 

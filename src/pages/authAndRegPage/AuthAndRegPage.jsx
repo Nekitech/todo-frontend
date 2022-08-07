@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import styles from './AuthAndRegPage.module.css';
 import {useNavigate} from 'react-router-dom';
-import {Link} from "react-router-dom";
 import {pathGlobal} from "../../config/global";
 import {useSelector} from "react-redux";
 import FormAuth from "../../components/formAuth/FormAuth";
@@ -20,6 +19,7 @@ function AuthAndRegPage(props) {
 
     useEffect(() => {
         if (isToken) {
+
             navigate(`/${pathGlobal}MainPage`)
         }
     }, [isToken])
