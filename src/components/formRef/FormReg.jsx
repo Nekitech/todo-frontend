@@ -24,7 +24,6 @@ function FormReg(props) {
         if (data?.payload.token) {
             window.localStorage.setItem('token', data.payload.token);
         }
-        console.log(value)
     }
 
     return (

@@ -52,7 +52,6 @@ export const fetchUpdateTask = createAsyncThunk(
 export const fetchCreateGroup = createAsyncThunk(
     'todo/fetchCreateGroup',
     async ({nameGroup, idGroup}) => {
-        console.log(nameGroup, idGroup);
         const groups = await axios.post('/groups',
             {
                 nameGroup: nameGroup,

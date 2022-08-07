@@ -23,7 +23,6 @@ function FormAuth(props) {
             window.localStorage.setItem('token', data.payload.token);
         }
     }
-    console.log(isValid)
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.regAndAuth__formAuth}>

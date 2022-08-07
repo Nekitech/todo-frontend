@@ -63,12 +63,10 @@ function AuthAndRegPage(props) {
                                 </div>
                             </>
 
-                    )
-                    :
-                    (<BeatLoader size={30} color={"#fff"} className={styles.spinner}/>)
+                        )
+                        :
+                        (<BeatLoader size={30} color={"#fff"} className={styles.spinner}/>)
                 }
-
-
             </div>
         </div>
     );
