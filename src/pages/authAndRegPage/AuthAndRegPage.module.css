@@ -111,3 +111,9 @@
     font-weight: 400;
     line-height: 34px;
 }
+.spinner {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}

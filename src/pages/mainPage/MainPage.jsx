@@ -6,12 +6,10 @@ import styles from "./MainPage.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchTodo} from "../../redux/slices/todoSlice";
 import {fetchUser} from "../../redux/slices/authSlice";
-import {BeatLoader} from "react-spinners";
 
 function MainPage(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.auth.data.token);
-    const isLodaing = useSelector(state => state.auth.status) === 'loading';
 
     useEffect(() => {
         dispatch(fetchUser())
@@ -19,24 +17,14 @@ function MainPage(props) {
 
     }, []);
 
-
     return (
-
-        (!isLodaing)
-            ?
-            (
-                <div className={styles.mainPage}>
-                    <SideMenuGroup/>
-                    <Group/>
-                    <MenuTask/>
-                </div>
-            )
-            :
-            (
-                <BeatLoader size={450} color={"#fff"} className={styles.spinner}/>
-            )
+        <div className={styles.mainPage}>
+            <SideMenuGroup/>
+            <Group/>
+            <MenuTask/>
+        </div>
 
     );
-};
+}
 
 export default MainPage;
