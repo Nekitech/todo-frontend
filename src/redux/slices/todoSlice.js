@@ -69,6 +69,17 @@ export const fetchDeleteGroup = createAsyncThunk(
         return groups.data;
 });
 
+export const fetchUpdateNameGroup = createAsyncThunk(
+    'todo/fetchUpdateNameGroup',
+    async ({userId, groupId, nameGroup}) => {
+        const groups = await axios.post(`/groups/${groupId}`, {
+            userId: userId,
+            newNameGroup: nameGroup
+        });
+
+        return groups.data;
+});
+
 const todoSlice = createSlice({
     name: 'todo',
     initialState: {

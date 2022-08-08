@@ -1,8 +1,14 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from "./GroupBtn.module.css";
 import bucket from '../../assets/img/bucket.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {fetchDeleteGroup, setChangeNameGroup, setCurrGroup, setDeleteGroup} from "../../redux/slices/todoSlice";
+import {
+    fetchDeleteGroup,
+    fetchUpdateNameGroup,
+    setChangeNameGroup,
+    setCurrGroup,
+    setDeleteGroup
+} from "../../redux/slices/todoSlice";
 import {setMenuTaskActive} from "../../redux/slices/menuTaskActiveSlice";
 import pencil from '../../assets/img/pencil.svg'
 
@@ -11,14 +17,21 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
     const activeMenuTask = useSelector(state => state.menuTaskActiveReducer.activeMenuTask);
     const currGroupId = useSelector(state => state.groupsReducer.currGroupId);
     const nameGroup = useRef(null)
+    const userCurrId = useSelector(state => state.auth.data._id)
 
     const handleClickOutside = e => {
         if (nameGroup?.current === e.target) {
             return null
         }
         nameGroup.current?.setAttribute('disabled', 'disabled')
+        dispatch(fetchUpdateNameGroup({userId: userCurrId, groupId: currGroupId, nameGroup: nameGroup.current?.value}))
     }
-    document.addEventListener('click', handleClickOutside);
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside)
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+    }, [])
 
     const checkActiveBtn = (e) => {
         const groupText = document.querySelectorAll(`.${styles.groupName}`)
