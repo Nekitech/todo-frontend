@@ -34,38 +34,38 @@ const authFetch = createSlice({
         }
     },
     extraReducers: {
-        [fetchAuth.pending]: (state, ) => {
+        [fetchAuth.pending]: (state) => {
             state.status = 'loading';
         },
         [fetchAuth.fulfilled]: (state, action) => {
             state.data = action.payload;
             state.status = 'loaded';
         },
-        [fetchAuth.rejected]: (state, ) => {
+        [fetchAuth.rejected]: (state) => {
             state.data = {};
             state.status = 'error';
         },
 
-        [fetchUser.pending]: (state, ) => {
+        [fetchUser.pending]: (state) => {
             state.status = 'loading';
         },
         [fetchUser.fulfilled]: (state, action) => {
             state.data = action.payload;
             state.status = 'loaded';
         },
-        [fetchUser.rejected]: (state, ) => {
+        [fetchUser.rejected]: (state) => {
             state.data = {};
             state.status = 'error';
         },
 
-        [fetchRegister.pending]: (state, ) => {
+        [fetchRegister.pending]: (state) => {
             state.status = 'loading';
         },
         [fetchRegister.fulfilled]: (state, action) => {
             state.data = action.payload;
             state.status = 'loaded';
         },
-        [fetchRegister.rejected]: (state, ) => {
+        [fetchRegister.rejected]: (state) => {
             state.data = {};
             state.status = 'error';
         },

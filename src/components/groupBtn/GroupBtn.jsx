@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import styles from "./GroupBtn.module.css";
 import bucket from '../../assets/img/bucket.svg'
 import {useDispatch, useSelector} from "react-redux";
@@ -19,19 +19,17 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
     const nameGroup = useRef(null)
     const userCurrId = useSelector(state => state.auth.data._id)
 
+
     const handleClickOutside = e => {
         if (nameGroup?.current === e.target) {
             return null
         }
-        nameGroup.current?.setAttribute('disabled', 'disabled')
-        dispatch(fetchUpdateNameGroup({userId: userCurrId, groupId: currGroupId, nameGroup: nameGroup.current?.value}))
+        nameGroup?.current.setAttribute('readonly', 'readonly')
+        dispatch(fetchUpdateNameGroup({userId: userCurrId,
+            groupId: currGroupId,
+            nameGroup: nameGroup.current?.value}));
+        document.removeEventListener('click', handleClickOutside);
     }
-    useEffect(() => {
-        document.addEventListener('click', handleClickOutside)
-        return () => {
-            document.removeEventListener('click', handleClickOutside)
-        }
-    }, [])
 
     const checkActiveBtn = (e) => {
         const groupText = document.querySelectorAll(`.${styles.groupName}`)
@@ -52,7 +50,8 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
             onDrop={onDrop}
             className={styles.groupBtn}>
             <img onClick={(e) => {
-                nameGroup.current.removeAttribute('disabled')
+                document.addEventListener('click', handleClickOutside)
+                nameGroup.current.removeAttribute('readonly')
                 e.stopPropagation()
             }}
                  className={styles.iconGroupEdit} src={pencil} alt=""/>
@@ -71,7 +70,8 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
                    }}
                    className={(props.idGroup === currGroupId)
                        ? styles.groupName + " " + styles.activeBtn
-                       : styles.groupName}/>
+                       : styles.groupName}
+                    readOnly={'readonly'}/>
             <img onClick={() => {
                 if (activeMenuTask && props.idGroup === currGroupId) {
                     dispatch(setMenuTaskActive({activeMenuTask: !activeMenuTask}))

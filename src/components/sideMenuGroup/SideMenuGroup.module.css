@@ -7,7 +7,6 @@
     transition: 0.3s all;
     background-color: transparent;
 
-
 }
 .sideMenu__icon {
     position: absolute;
@@ -32,12 +31,13 @@
     background-color: #A47878;
 }
 .sideMenu__container {
-    display: flex;
+    display: none;
     flex-direction: column;
     opacity: 0;
     padding: 80px 30px 100px 30px;
     height: 100%;
 }
-.activeMenu .sideMenu__container {
+.sideMenu.activeMenu .sideMenu__container {
+    display: flex;
     opacity: 100%;
 }
