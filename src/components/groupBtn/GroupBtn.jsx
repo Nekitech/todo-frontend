@@ -19,7 +19,6 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
     const nameGroup = useRef(null)
     const userCurrId = useSelector(state => state.auth.data._id)
 
-    console.log(props.name)
     const handleClickOutside = e => {
         if (nameGroup?.current === e.target) {
             return null
@@ -83,4 +82,6 @@ function GroupBtn({draggable, onDragEnd, onDragStart, onDragLeave, onDragOver, o
     );
 }
 
-export default React.memo(GroupBtn);
+export default React.memo(GroupBtn, (prevProps, nextProps) => {
+    return prevProps?.name === nextProps?.name
+});

@@ -62,4 +62,4 @@ function AddTask(props) {
     );
 }
 
-export default React.memo(AddTask);
+export default AddTask;
