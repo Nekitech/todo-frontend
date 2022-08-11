@@ -122,4 +122,4 @@ function MenuTask(props) {
     );
 }
 
-export default MenuTask;
+export default React.memo(MenuTask);

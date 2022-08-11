@@ -7,7 +7,7 @@ import {fetchCreateTask, setAddTask} from "../../redux/slices/todoSlice";
 import InputTask from "../UI/inputTask/InputTask";
 import mongoose from 'mongoose';
 
-function AddTask({addT}) {
+function AddTask(props) {
     const getDateTask = () => {
         let [day, month, year] = [new Date().getDate(), new Date().getMonth() + 1, new Date().getFullYear()]
         month = (month < 10) ? ('0'+month) : (month)
@@ -62,4 +62,4 @@ function AddTask({addT}) {
     );
 }
 
-export default AddTask;
+export default React.memo(AddTask);

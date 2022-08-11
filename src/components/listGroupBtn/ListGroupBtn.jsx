@@ -56,4 +56,4 @@ function ListGroupBtn(props) {
     );
 }
 
-export default ListGroupBtn;
+export default React.memo(ListGroupBtn);
